@@ -1115,6 +1115,7 @@ body.tiene-resultado .gm-resultado { display: block; }
   .gm-octa-lista .nivel-alto { background: rgba(179, 241, 49, .08); }
   .gm-octa-lista .nivel-alto .gm-ol-num { color: var(--green-light); }
   .gm-octa-lista .nivel-alto .gm-ol-nivel { background: var(--green-light); color: var(--on-accent); }
+  .gm-octa-lista .nivel-medio { background: rgba(255, 239, 124, .08); }
   .gm-octa-lista .nivel-medio .gm-ol-num { color: var(--warning-light); }
   .gm-octa-lista .nivel-medio .gm-ol-nivel { background: var(--warning-light); color: var(--neutral-01); }
   .gm-octa-lista .nivel-bajo .gm-ol-nivel { background: var(--neutral-04); color: var(--white); }

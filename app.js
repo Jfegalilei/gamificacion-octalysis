@@ -201,7 +201,7 @@ var FASES = [
     falla: 'Nadie entra. Tienes un sistema perfecto que no vio nadie.'
   },
   {
-    id: 'incorporacion', n: 2, nombre: 'Incorporación', cuando: 'los primeros días',
+    id: 'tutorial', n: 2, nombre: 'Tutorial', cuando: 'los primeros días',
     pregunta: '¿Entiende las reglas y siente que puede?',
     def: 'Ya entró. Está aprendiendo cómo funciona y necesita ganar algo pronto para creer que vale la pena. Es la fase más frágil de las cuatro.',
     dominan: [2, 3], apoyan: [4, 7],
@@ -213,7 +213,7 @@ var FASES = [
     falla: 'Entran y se van el mismo día. Es donde se pierde más gente.'
   },
   {
-    id: 'construccion', n: 3, nombre: 'Construcción', cuando: 'el día a día',
+    id: 'desarrollo', n: 3, nombre: 'Desarrollo', cuando: 'el día a día',
     pregunta: '¿Por qué vuelve mañana, y pasado?',
     def: 'Ya sabe jugar. Esta es la rutina larga, el día a día, y es donde vive casi toda la experiencia. También donde más fácil se cae en el aburrimiento.',
     dominan: [4, 5, 7, 8], apoyan: [2, 3, 6],
@@ -227,7 +227,7 @@ var FASES = [
     falla: 'Se aburren a la semana. Cumplen por obligación y el sistema se vuelve un trámite.'
   },
   {
-    id: 'veterania', n: 4, nombre: 'Veteranía', cuando: 'el que lleva años',
+    id: 'maestria', n: 4, nombre: 'Maestría', cuando: 'el que lleva años',
     pregunta: '¿Por qué sigue el que ya lo tiene todo?',
     def: 'Ya consiguió lo que había y no quedan niveles por desbloquear. Si no le das una razón distinta se va, y es justo la persona que más te sirve.',
     dominan: [1, 5, 8], apoyan: [3, 6],
