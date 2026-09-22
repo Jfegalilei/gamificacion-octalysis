@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metodología · Gamificación con Octalysis</title>
+<meta name="description" content="Qué es la gamificación, los 8 motivadores del marco Octalysis, las dos lecturas del octágono, las 4 fases del viaje y qué premiar. Explicado paso a paso, con un diagnóstico al final.">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Radio+Canada+Big:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/galilei-base.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav id="main-nav" aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a href="https://galileilearning.com/" class="nav-logo" aria-label="Galilei - Inicio">
+      <svg viewBox="0 0 236 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Galilei">
+        <g clip-path="url(#nav-logo-clip)">
+          <path d="M7.99 73.3c2.27 3.256 6.51 8.781 15.982 8.781 8.584 0 18.45-2.664 18.45-15.294v-6.02c-4.144 5.032-10.46 7.302-17.068 7.302-13.32 0-23.778-9.075-23.778-22.89 0-13.815 10.457-23.187 23.384-23.187 6.808 0 13.318 2.664 17.464 7.696v-6.61h8.584V66.49c0 17.956-13.518 23.481-27.133 23.481-10.26 0-18.647-5.228-21.705-11.345l5.822-5.328-.003.002Zm34.432-25.654v-5.031c0-8.09-7.696-13.122-16.083-13.122-9.175 0-16.18 6.117-16.18 15.589 0 9.472 7.202 15.491 16.28 15.491 8.19 0 15.983-4.934 15.983-12.924v-.003Zm73.404 22.399V.584h8.484v69.46h-8.484Zm19.735-63.148h8.484v7.993h-8.484V6.897Zm0 63.148V22.98h8.484v47.062h-8.484v.003Zm19.633 0V.584h8.484v69.46h-8.484Zm16.082-22.202c0-15.982 8.09-25.851 24.666-25.851 16.577 0 23.778 12.333 23.778 27.034h-39.366c0 8.583 6.71 14.306 15.294 14.306 7.005 0 13.418-1.085 15.194-8.484h8.09c-1.185 13.121-13.121 16.18-23.284 16.18-14.109 0-24.369-8.881-24.369-23.188l-.003.003Zm39.17-6.017c-1.677-7.004-6.217-12.136-14.898-12.136-9.372 0-14.209 5.92-15.194 12.136h30.092Zm17.068-34.929h8.484v7.993h-8.484V6.897Zm0 63.148V22.98h8.484v47.062h-8.484v.003Z" fill="#fff"></path>
+          <path d="m82.153 83.49-4.386-.022c.05-10.202-.43-24.03-5.162-26.327-4.612-2.238-15.208 5.505-22.778 11.524l-2.73-3.431c24.824-19.737 20.531-44.02 15.765-56.74l4.107-1.539c4.558 12.162 20.993 30.725 53.667 23.14l.991 4.272c-10.034 2.328-23.495 6.009-24.564 11.048-1.035 4.885 9.096 13.18 16.805 18.991l-2.64 3.5c-8.403-6.335-18.658-13.303-23.437-10.935-4.895 2.425-5.586 15.444-5.641 26.516l.003.002Zm-11.49-31.157c1.413 0 2.685.294 3.857.862 2.52 1.222 4.338 3.62 5.567 7.638 1.293-4.062 3.174-6.508 5.76-7.79 2.509-1.243 5.58-1.233 9.33.042-2.244-3.214-2.959-5.965-2.404-8.581.699-3.295 3.363-5.999 8.717-8.487-7.204-.596-13.86-2.575-19.747-5.912a44.321 44.321 0 0 1-11.275-9.135c.57 4.485.657 9.422-.144 14.571-1.054 6.771-3.497 13.09-7.3 18.915 2.98-1.437 5.474-2.125 7.636-2.125l.003.002Z" fill="#B3F131"></path>
+          <path d="M74.021 50.092a2.717 2.717 0 1 0 0-5.433 2.717 2.717 0 0 0 0 5.433Zm14.845-7.546a2.717 2.717 0 1 0 0-5.433 2.717 2.717 0 0 0 0 5.433Z" fill="#B3F131"></path>
+        </g>
+        <defs><clipPath id="nav-logo-clip"><path fill="#fff" transform="translate(0 .583)" d="M0 0h236v89.39H0z"></path></clipPath></defs>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="https://galileilearning.com/">Inicio</a>
+      <a href="#cap-1" class="nav-link-active" aria-current="page">Metodología</a>
+      <a href="https://galileilearning.com/galireviews" class="nav-link-soon"> GaliReviews <span class="nav-tooltip" role="tooltip">Próximamente</span> </a>
+      <a href="https://galileilearning.com/loteria">Lotería</a>
+    </div>
+    <div class="hamburger" id="hamburger" aria-label="Abrir menú" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="https://galileilearning.com/" class="mobile-link">Inicio</a>
+  <a href="#cap-1" class="mobile-link">Metodología</a>
+  <a href="https://galileilearning.com/galireviews" class="mobile-link">GaliReviews <span class="mobile-link-badge">Próximamente</span></a>
+  <a href="https://galileilearning.com/loteria" class="mobile-link">Lotería</a>
+</div>
+
+<aside id="rail" class="gm-rail" aria-label="Contenido de la página">
+  <ol>
+    <li class="gm-rail-grupo"><span>Entender</span></li>
+    <li><a href="#cap-1"><span class="gm-rail-n">1</span><span class="gm-rail-t">Qué es y qué no es</span></a></li>
+    <li class="gm-rail-grupo"><span>El marco</span></li>
+    <li><a href="#cap-2"><span class="gm-rail-n">2</span><span class="gm-rail-t">Los 8 motivadores</span></a></li>
+    <li><a href="#cap-3"><span class="gm-rail-n">3</span><span class="gm-rail-t">Ponte a prueba</span></a></li>
+    <li><a href="#cap-4"><span class="gm-rail-n">4</span><span class="gm-rail-t">Cómo leer el Octágono</span></a></li>
+    <li><a href="#cap-5"><span class="gm-rail-n">5</span><span class="gm-rail-t">Las 4 fases</span></a></li>
+    <li class="gm-rail-grupo"><span>Aplicarlo</span></li>
+    <li><a href="#cap-6"><span class="gm-rail-n">6</span><span class="gm-rail-t">Quién está jugando</span></a></li>
+    <li><a href="#cap-7"><span class="gm-rail-n">7</span><span class="gm-rail-t">Qué premiar</span></a></li>
+    <li class="gm-rail-grupo"><span>Tu caso</span></li>
+    <li><a href="#paso-diagnostico"><span class="gm-rail-n">8</span><span class="gm-rail-t">Tu diagnóstico</span></a></li>
+  </ol>
+</aside>
+
+<main>
+
+<!-- ============================ HERO ============================ -->
+<section class="gm-hero">
+  <div class="container gm-hero-grid">
+    <div class="gm-hero-text">
+      <p class="eyebrow">METODOLOGÍA</p>
+      <h1>La gamificación no es poner <span class="gm-coral">puntos</span>. Es diseñar <span class="accent">motivación</span>.</h1>
+      <p class="gm-hero-sub">Hay ocho razones que mueven a una persona a hacer algo. Están detrás de por qué revisas cuántos likes tuvo una foto, por qué nadie quiere romper una racha de 47 días, y por qué hay quien escribe en Wikipedia gratis.</p>
+      <p class="gm-hero-sub">Ese mapa se llama <strong>Octalysis</strong>, lo armó Yu-kai Chou, y esta página te lo explica brevemente. Al final diseñamos una herramienta que puede darte una idea inicial de qué mueve a tu equipo.</p>
+      <div class="gm-hero-ctas">
+        <a href="#cap-1" class="btn-primary">Comenzar</a>
+      </div>
+    </div>
+    <div class="gm-hero-art">
+      <img src="assets/Gali-47.png" class="gm-hero-gali" alt="" aria-hidden="true" width="2028" height="2028">
+    </div>
+  </div>
+  <div class="container">
+    <ol class="gm-indice reveal">
+      <li><a href="#cap-1"><b>01</b>Qué es y qué no es la gamificación</a></li>
+      <li><a href="#cap-2"><b>02</b>Los 8 motivadores</a></li>
+      <li><a href="#cap-3"><b>03</b>Ponte a prueba</a></li>
+      <li><a href="#cap-4"><b>04</b>Las dos lecturas del octágono</a></li>
+      <li><a href="#cap-5"><b>05</b>Las 4 fases del viaje</a></li>
+      <li><a href="#cap-6"><b>06</b>Quién está jugando</a></li>
+      <li><a href="#cap-7"><b>07</b>Qué premiar y cómo</a></li>
+      <li><a href="#paso-diagnostico"><b>08</b>El octágono de tu equipo</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ CAPÍTULO 1 ============================ -->
+<section id="cap-1" class="gm-cap gm-c1 section-pad">
+  <div class="container">
+    <header class="gm-cap-head reveal">
+      <p class="gm-cap-tag"><span>01</span> Entender</p>
+      <h2>Qué <span class="accent">es</span> y qué <span class="gm-coral">no es</span> la gamificación</h2>
+      <p class="subtitle">Empecemos por limpiar el término, porque casi todo lo que se llama gamificación no lo es. Se estima que <strong>el 80% de los proyectos fracasa</strong>, y casi siempre por la misma razón.</p>
+    </header>
+
+    <div class="gm-doscol reveal">
+      <article class="gm-concepto">
+        <span class="gm-concepto-tag gm-tag-mal">Como se hace casi siempre</span>
+        <h3>Se arma el proceso y se espera que la gente cumpla</h3>
+        <p>Se define qué hay que hacer, se ordena para que sea eficiente, y se da por hecho que lo harán porque les toca.</p>
+        <p class="gm-concepto-cierre">La pregunta es <em>¿El proceso funciona?</em></p>
+      </article>
+      <article class="gm-concepto gm-concepto-bien">
+        <span class="gm-concepto-tag gm-tag-bien">Como se hace acá</span>
+        <h3>Se arranca por qué le importaría a la persona</h3>
+        <p>Quien va a hacerlo tiene sus propias razones para querer o no querer. Se construye alrededor de esas razones.</p>
+        <p class="gm-concepto-cierre">La pregunta es <em>¿Volvería mañana sin que se lo pidan?</em></p>
+      </article>
+    </div>
+
+    <div class="gm-card reveal-right">
+      <div class="gm-compare-head">
+        <span class="gm-head-no">El malentendido</span>
+        <span class="gm-head-si">Lo que realmente es</span>
+      </div>
+      <div class="compare-rows">
+        <div class="compare-row">
+          <div class="compare-cell lms"><img class="compare-icon" src="assets/compare-icon-x.svg" alt="" aria-hidden="true" width="24" height="24"><span>Copiar lo que se ve en los juegos y pegarlo encima de la tarea.</span></div>
+          <div class="compare-cell gali"><img class="compare-icon" src="assets/compare-icon-check.svg" alt="" aria-hidden="true" width="24" height="24"><span>Entender primero qué mueve a ese grupo de personas, y elegir las herramientas después.</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell lms"><img class="compare-icon" src="assets/compare-icon-x.svg" alt="" aria-hidden="true" width="24" height="24"><span>Que todo se resuelve con puntos, medallas y tablas de posiciones.</span></div>
+          <div class="compare-cell gali"><img class="compare-icon" src="assets/compare-icon-check.svg" alt="" aria-hidden="true" width="24" height="24"><span>Son tres herramientas de una caja mucho más grande, y casi nunca las mejores.</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell lms"><img class="compare-icon" src="assets/compare-icon-x.svg" alt="" aria-hidden="true" width="24" height="24"><span>Que hay que construir un juego completo para que funcione.</span></div>
+          <div class="compare-cell gali"><img class="compare-icon" src="assets/compare-icon-check.svg" alt="" aria-hidden="true" width="24" height="24"><span>Casi siempre <strong>ni se nota</strong>: una tarjeta de sellos no parece un juego, y lleva cincuenta años funcionando.</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell lms"><img class="compare-icon" src="assets/compare-icon-x.svg" alt="" aria-hidden="true" width="24" height="24"><span>Que gana el que mete más mecánicas.</span></div>
+          <div class="compare-cell gali"><img class="compare-icon" src="assets/compare-icon-check.svg" alt="" aria-hidden="true" width="24" height="24"><span>Gana el que le apunta a la razón <strong>correcta</strong> para su gente. Una sola, bien elegida, basta.</span></div>
+        </div>
+      </div>
+      <blockquote class="gm-quote">
+        <p>Entender por qué la gente hace lo que hace, y usar eso para que quiera o disfrute hacer lo que al negocio le sirve.</p>
+        <cite>Eso es todo. El resto son herramientas.</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CAPÍTULO 2 ============================ -->
+<section id="cap-2" class="gm-cap gm-c2 section-pad">
+  <div class="container">
+    <header class="gm-cap-head reveal">
+      <p class="gm-cap-tag"><span>02</span> El marco</p>
+      <h2>Los 8 motivadores</h2>
+      <p class="subtitle">Yu-kai Chou revisó cientos de cosas que la gente hace por gusto, sin que nadie la obligue, y encontró que todas se apoyan en alguna de estas ocho razones. Las puso en un octágono porque el lugar de cada una significa algo, pero eso viene después.</p>
+      <p class="gm-instruccion"><strong>Toca cada segmento</strong> para ver qué es, dónde lo has visto y cómo se activa.</p>
+    </header>
+
+    <div class="gm-octa-grid">
+      <div class="gm-octa-wrap reveal" id="octa-explorar"></div>
+      <div class="gm-panel reveal-right" id="octa-panel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CAPÍTULO 3 ============================ -->
+<section id="cap-3" class="gm-cap gm-c3 section-pad">
+  <div class="container">
+    <header class="gm-cap-head reveal">
+      <p class="gm-cap-tag"><span>03</span> El marco</p>
+      <h2>Ponte a prueba</h2>
+      <p class="subtitle">La forma de aprender esto no es memorizar los ocho nombres: es reconocerlos cuando aparecen. Ocho situaciones que ya conoces. ¿Qué motivador está trabajando en cada una?</p>
+    </header>
+    <div class="gm-quiz-wrap reveal">
+      <div id="quiz" class="gm-quiz"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CAPÍTULO 4 ============================ -->
+<section id="cap-4" class="gm-cap gm-c4 section-pad">
+  <div class="container">
+    <header class="gm-cap-head reveal">
+      <p class="gm-cap-tag"><span>04</span> El marco</p>
+      <h2>Las dos lecturas del octágono</h2>
+      <p class="subtitle">La figura no es un adorno. El lugar de cada motivador dice cómo se comporta. Hay dos formas de partirla, y las dos importan.</p>
+      <div class="gm-lente" role="tablist" aria-label="Elegir la lectura">
+        <button type="button" class="gm-lente-btn active" data-lente="motiv" role="tab" aria-selected="true">Extrínsecos e intrínsecos</button>
+        <button type="button" class="gm-lente-btn" data-lente="hat" role="tab" aria-selected="false">Sombrero blanco y negro</button>
+      </div>
+    </header>
+
+    <div class="gm-lecturas-grid">
+      <div class="gm-octa-wrap gm-octa-lecturas reveal" id="octa-lecturas" data-lente="motiv"></div>
+
+      <div class="gm-lectura reveal-right" data-lente="motiv">
+        <h3>Extrínsecos e intrínsecos</h3>
+        <p class="gm-lectura-intro">A la izquierda, lo que se hace por lo que se gana al final: son los <strong>extrínsecos</strong>, la razón está afuera. A la derecha, lo que se hace porque hacerlo ya vale la pena: los <strong>intrínsecos</strong>, la razón está adentro.</p>
+        <div class="gm-lectura-par">
+          <article class="gm-mitad gm-mitad-ext">
+            <span class="gm-mitad-tag">Izquierda · Extrínsecos</span>
+            <p class="gm-mitad-cds"><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd2.png" alt="">Desarrollo</span><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd4.png" alt="">Propiedad</span><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd6.png" alt="">Escasez</span></p>
+            <p>Lo que quiere la persona está al final: el nivel, la pieza que falta, el premio que se acaba.</p>
+            <p class="gm-mitad-pro"><strong>Sirven para:</strong> que la gente <em>entre</em>. Son la puerta.</p>
+            <p class="gm-mitad-contra"><strong>Su límite:</strong> cuando el premio deja de sorprender, se cae todo.</p>
+          </article>
+          <article class="gm-mitad gm-mitad-int">
+            <span class="gm-mitad-tag">Derecha · Intrínsecos</span>
+            <p class="gm-mitad-cds"><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd3.png" alt="">Creatividad</span><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd5.png" alt="">Influencia Social</span><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd7.png" alt="">Impredecibilidad</span></p>
+            <p>Lo que quiere está en hacerlo: decidir, estar con los suyos, ver qué pasa.</p>
+            <p class="gm-mitad-pro"><strong>Sirven para:</strong> que la gente <em>se quede</em>.</p>
+            <p class="gm-mitad-contra"><strong>Su límite:</strong> arrancan lento. Sin algo visible, pocos entran el primer día.</p>
+          </article>
+        </div>
+        <p class="gm-lectura-nota">Sentido Épico y Pérdida quedan justo en la mitad: no son de un lado ni del otro.</p>
+        <p class="gm-lectura-cierre"><strong>La regla:</strong> los extrínsecos para que entren, los intrínsecos para que se queden. Solo premios y se apaga; solo experiencia y nunca arranca.</p>
+      </div>
+      <div class="gm-lectura reveal-right" data-lente="hat" hidden>
+        <h3>Sombrero blanco y sombrero negro</h3>
+        <p class="gm-lectura-intro">Los tres de arriba mueven a la gente haciéndola sentir bien: son el <strong>sombrero blanco</strong>. Los tres de abajo la mueven incomodándola —apuro, ansiedad, miedo a perder algo— y son el <strong>sombrero negro</strong>. Blanco y negro no significa bueno y malo: significa cómo se siente.</p>
+        <div class="gm-lectura-par">
+          <article class="gm-mitad gm-mitad-blanca">
+            <span class="gm-mitad-tag">Arriba · Sombrero blanco</span>
+            <p class="gm-mitad-cds"><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd1.png" alt="">Sentido Épico</span><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd2.png" alt="">Desarrollo</span><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd3.png" alt="">Creatividad</span></p>
+            <p>La gente participa porque quiere.</p>
+            <p class="gm-mitad-pro"><strong>A favor:</strong> no cansan. Nadie se quema de sentirse bien.</p>
+            <p class="gm-mitad-contra"><strong>En contra:</strong> son lentos. Nadie hace nada hoy por esto.</p>
+          </article>
+          <article class="gm-mitad gm-mitad-negra">
+            <span class="gm-mitad-tag">Abajo · Sombrero negro</span>
+            <p class="gm-mitad-cds"><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd6.png" alt="">Escasez</span><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd7.png" alt="">Impredecibilidad</span><span class="gm-cd-chip"><img class="gm-cd-ico" src="assets/cd/cd8.png" alt="">Pérdida</span></p>
+            <p>La gente participa porque no puede parar.</p>
+            <p class="gm-mitad-pro"><strong>A favor:</strong> funcionan hoy mismo.</p>
+            <p class="gm-mitad-contra"><strong>En contra:</strong> desgastan. Con el tiempo la gente cumple y te odia.</p>
+          </article>
+        </div>
+        <p class="gm-lectura-cierre"><strong>La regla:</strong> el sombrero negro sirve para arrancar y para momentos puntuales. Si todo tu sistema vive ahí, aguanta un trimestre y se cae. Lo que sostiene es el blanco.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ CAPÍTULO 5 ============================ -->
+<section id="cap-5" class="gm-cap gm-c5 section-pad">
+  <div class="container">
+    <header class="gm-cap-head reveal">
+      <p class="gm-cap-tag"><span>05</span> El marco</p>
+      <h2>No es lo mismo el primer día que el año siguiente</h2>
+      <p class="subtitle">Este es el error más caro: armar un solo sistema y dejarlo igual para siempre. Lo que hace que alguien entre no es lo que lo hace volver, y nada de eso retiene al que lleva años. <strong>Toca cada momento</strong> para ver cómo cambia el octágono.</p>
+    </header>
+
+    <div class="gm-fases reveal">
+      <div class="gm-fases-tabs" id="fases-tabs" role="tablist" aria-label="Las cuatro fases"></div>
+      <div class="gm-fases-cuerpo" id="fases-cuerpo"></div>
+    </div>
+
+    <p class="gm-aviso reveal">Esto es una base. Un buen diseño tiene que tener en cuenta muchas otras cosas, empezando por el octágono de la población específica con la que trabajas.</p>
+  </div>
+</section>
+
+<!-- ============================ CAPÍTULO 6 ============================ -->
+<section id="cap-6" class="gm-cap gm-c6 section-pad">
+  <div class="container">
+    <header class="gm-cap-head reveal">
+      <p class="gm-cap-tag"><span>06</span> Aplicarlo</p>
+      <h2>Quién está jugando</h2>
+      <p class="subtitle">No a todo el mundo lo mueve lo mismo, y una forma rápida de aterrizarlo es agrupar a la gente en perfiles.</p>
+      <p class="subtitle">Aquí hay que decir algo: <strong>no existe una única forma de agrupar</strong>. Hay varias, cada una hecha para un contexto distinto, y ninguna es la verdad. La más conocida es la de Richard Bartle, que salió de observar jugadores de juegos en línea en los años noventa — por eso habla de cuatro perfiles y por eso se le nota el origen. Después se han propuesto otras pensadas para el trabajo y no para los juegos, como la de seis perfiles de Andrzej Marczewski.</p>
+      <p class="subtitle">Abajo está la de Bartle, porque es la más extendida y sirve de atajo. Pero léela como una lupa más, no como un diagnóstico: <strong>lo que de verdad manda es el octágono</strong>.</p>
+    </header>
+    <div id="jugadores-lista" class="gm-jug-grid reveal"></div>
+    <p class="gm-nota-pie reveal">Nadie es un solo perfil: todos tenemos algo de los cuatro, en proporciones distintas, y además cambian según el día y la tarea. Si tu equipo no se parece a ninguno, no es que esté mal — es que esta forma de agrupar no lo alcanza. Pasa seguido, y el diagnóstico del final te lo dice cuando ocurre.</p>
+  </div>
+</section>
+
+<!-- ============================ CAPÍTULO 7 ============================ -->
+<section id="cap-7" class="gm-cap gm-c7 section-pad">
+  <div class="container">
+    <header class="gm-cap-head reveal">
+      <p class="gm-cap-tag"><span>07</span> Aplicarlo</p>
+      <h2>Qué premiar, y cómo</h2>
+      <p class="subtitle">Ya sabes qué motivador quieres tocar. Falta lo concreto: qué le das a la gente y de qué forma se lo entregas. Son dos decisiones distintas, y la segunda pesa tanto como la primera.</p>
+    </header>
+
+    <h3 class="gm-sub-titulo reveal">Qué dar</h3>
+    <p class="gm-sub-texto reveal">Hay cuatro cosas que puedes dar: estatus, acceso, poder y cosas. La pirámide no dice cuál es mejor, dice <strong>qué te cuesta cada una y cuánto le dura a quien la recibe</strong>. Las de arriba salen baratas y duran; las de abajo cuestan más y se consumen rápido. Las cuatro sirven — en momentos distintos.</p>
+
+    <div class="gm-saps-grid reveal">
+      <div class="gm-saps-pyr">
+        <svg viewBox="0 0 560 445" role="img" aria-label="Las cuatro cosas que puedes dar, ordenadas por costo y duración: arriba Estatus y Acceso, que salen baratas y duran; abajo Poder y Cosas, que cuestan más y se consumen rápido">
+          <polygon class="gm-sp gm-sp1" points="280,10 397.6,210 162.4,210"/>
+          <polygon class="gm-sp gm-sp2" points="162.4,210 397.6,210 441.8,285 118.2,285"/>
+          <polygon class="gm-sp gm-sp3" points="118.2,285 441.8,285 485.9,360 74.1,360"/>
+          <polygon class="gm-sp gm-sp4" points="74.1,360 485.9,360 530,435 30,435"/>
+
+          <image href="assets/saps/estatus.png" x="242" y="72" width="76" height="76"/>
+          <text class="gm-sp-t gm-sp-t-oscuro" x="280" y="184">Estatus</text>
+
+          <image href="assets/saps/acceso.png" x="206" y="225" width="45" height="45"/>
+          <text class="gm-sp-t gm-sp-t-oscuro gm-sp-t-izq" x="262" y="257">Acceso</text>
+
+          <image href="assets/saps/poder.png" x="213" y="300" width="45" height="45"/>
+          <text class="gm-sp-t gm-sp-t-izq" x="269" y="332">Poder</text>
+
+          <image href="assets/saps/cosas.png" x="213" y="375" width="45" height="45"/>
+          <text class="gm-sp-t gm-sp-t-izq" x="269" y="407">Cosas</text>
+        </svg>
+      </div>
+      <div id="saps-lista" class="gm-saps-lista"></div>
+    </div>
+
+    <h3 class="gm-sub-titulo reveal">Cómo darlo</h3>
+    <p class="gm-sub-texto reveal">Lo mismo mueve distinto según cómo llegue. Mezclar varias formas rinde más que insistir con una.</p>
+    <div id="entregas-lista" class="gm-rec-grid reveal"></div>
+
+    <h3 class="gm-sub-titulo reveal">Tres que funcionan muy bien</h3>
+    <p class="gm-sub-texto reveal">Con la advertencia de cada una.</p>
+    <div id="mecanicas-lista" class="gm-rec-grid reveal"></div>
+  </div>
+</section>
+
+<!-- ============================ DIAGNÓSTICO ============================ -->
+<section id="paso-diagnostico" class="gm-cap gm-diag section-pad">
+  <div class="container">
+    <header class="gm-cap-head reveal">
+      <p class="gm-cap-tag"><span>08</span> Tu caso</p>
+      <h2>Ahora, el octágono de <span class="accent">tu equipo</span></h2>
+      <p class="subtitle">Ya tienes el marco. Lo que falta es lo único que el marco no te puede dar: cuáles de los ocho pesan en <em>tu</em> gente. Siete preguntas, y sale un octágono con tres motivadores fuertes, dos intermedios y tres débiles, con qué hacer en cada caso.</p>
+    </header>
+
+    <div class="gm-form-wrap reveal">
+      <div class="gm-form-barra">
+        <div class="gm-form-barra-track"><i id="form-progreso-barra"></i></div>
+        <span id="form-progreso-texto">0 de 7 respondidas</span>
+      </div>
+      <form id="form-equipo" class="gm-form"></form>
+      <div class="gm-form-acciones">
+        <button type="button" id="btn-calcular" class="btn-primary" disabled>Responde las 7 preguntas</button>
+        <button type="button" id="btn-reiniciar" class="gm-btn-ghost">Empezar de nuevo</button>
+      </div>
+      <p class="gm-disclaimer">
+        <strong>Cómo leer esto.</strong> Esto no es una medición completa: es un punto de partida para ordenar la conversación y saber por dónde empezar. El cálculo combina el octágono con patrones razonables de conducta, no con un estudio completo sobre tu gente, eso sólo se puede hacer manualmente.
+      </p>
+    </div>
+
+    <div id="resultado">
+      <div class="gm-bloqueado">
+        <p>Responde las preguntas y aquí aparece el octágono de tu equipo.</p>
+      </div>
+
+      <div class="gm-resultado">
+        <h3 class="gm-sub-titulo">Tu octágono</h3>
+        <p class="gm-sub-texto">Esta es tu <strong>base aproximada</strong>: el punto de partida para empezar a diseñar los cuatro momentos de tu experiencia.</p>
+        <div class="gm-octa-resultado-wrap">
+          <div id="octa-resultado" class="gm-octa-wrap gm-octa-res"></div>
+          <ol id="octa-lista" class="gm-octa-lista"></ol>
+          <div class="gm-leyenda-niveles">
+            <span class="gm-leg nivel-alto"><i></i>Alto · 3</span>
+            <span class="gm-leg nivel-medio"><i></i>Medio · 2</span>
+            <span class="gm-leg nivel-bajo"><i></i>Bajo · 3</span>
+          </div>
+        </div>
+        <div id="resultado-niveles" class="gm-niveles"></div>
+
+        <h3 class="gm-sub-titulo">Hacia qué perfil se inclina</h3>
+        <p class="gm-sub-texto">Los cuatro perfiles del capítulo 6, en la proporción que sugiere tu octágono. Recuerda que es una forma de agrupar entre varias: si no encaja, el octágono de arriba manda.</p>
+        <div id="resultado-jugadores"></div>
+      </div>
+    </div>
+
+    <div class="gm-fuentes reveal">
+      <h3>De dónde sale todo esto</h3>
+      <ul>
+        <li><strong>El octágono del método Octalysis</strong> Yu-kai Chou — <a href="https://octalysisgroup.com/" target="_blank" rel="noopener">octalysisgroup.com</a></li>
+        <li><strong>Los cuatro perfiles:</strong> Richard Bartle.</li>
+        <li><strong>Los tipos de Recompensas (El Modelo SAPS):</strong> Gabe Zichermann</li>
+        <li><strong>Cómo darlo, las tres reglas y los ejemplos:</strong> el boletín <a href="https://www.linkedin.com/newsletters/the-octalysis-observer-es-7078835212436037632/" target="_blank" rel="noopener">The Octalysis Observer</a>, de The Octalysis Group Latinoamérica</li>
+      </ul>
+      <p class="gm-fuentes-nota">El cálculo del diagnóstico es una interpretación propia de ese marco, no un producto de The Octalysis Group.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-left">
+        <a href="https://galileilearning.com/" class="footer-logo" aria-label="Galilei - Inicio">
+          <svg viewBox="0 0 236 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Galilei">
+            <g clip-path="url(#footer-logo-clip)">
+              <path d="M7.99 73.3c2.27 3.256 6.51 8.781 15.982 8.781 8.584 0 18.45-2.664 18.45-15.294v-6.02c-4.144 5.032-10.46 7.302-17.068 7.302-13.32 0-23.778-9.075-23.778-22.89 0-13.815 10.457-23.187 23.384-23.187 6.808 0 13.318 2.664 17.464 7.696v-6.61h8.584V66.49c0 17.956-13.518 23.481-27.133 23.481-10.26 0-18.647-5.228-21.705-11.345l5.822-5.328-.003.002Zm34.432-25.654v-5.031c0-8.09-7.696-13.122-16.083-13.122-9.175 0-16.18 6.117-16.18 15.589 0 9.472 7.202 15.491 16.28 15.491 8.19 0 15.983-4.934 15.983-12.924v-.003Zm73.404 22.399V.584h8.484v69.46h-8.484Zm19.735-63.148h8.484v7.993h-8.484V6.897Zm0 63.148V22.98h8.484v47.062h-8.484v.003Zm19.633 0V.584h8.484v69.46h-8.484Zm16.082-22.202c0-15.982 8.09-25.851 24.666-25.851 16.577 0 23.778 12.333 23.778 27.034h-39.366c0 8.583 6.71 14.306 15.294 14.306 7.005 0 13.418-1.085 15.194-8.484h8.09c-1.185 13.121-13.121 16.18-23.284 16.18-14.109 0-24.369-8.881-24.369-23.188l-.003.003Zm39.17-6.017c-1.677-7.004-6.217-12.136-14.898-12.136-9.372 0-14.209 5.92-15.194 12.136h30.092Zm17.068-34.929h8.484v7.993h-8.484V6.897Zm0 63.148V22.98h8.484v47.062h-8.484v.003Z" fill="#fff"></path>
+              <path d="m82.153 83.49-4.386-.022c.05-10.202-.43-24.03-5.162-26.327-4.612-2.238-15.208 5.505-22.778 11.524l-2.73-3.431c24.824-19.737 20.531-44.02 15.765-56.74l4.107-1.539c4.558 12.162 20.993 30.725 53.667 23.14l.991 4.272c-10.034 2.328-23.495 6.009-24.564 11.048-1.035 4.885 9.096 13.18 16.805 18.991l-2.64 3.5c-8.403-6.335-18.658-13.303-23.437-10.935-4.895 2.425-5.586 15.444-5.641 26.516l.003.002Zm-11.49-31.157c1.413 0 2.685.294 3.857.862 2.52 1.222 4.338 3.62 5.567 7.638 1.293-4.062 3.174-6.508 5.76-7.79 2.509-1.243 5.58-1.233 9.33.042-2.244-3.214-2.959-5.965-2.404-8.581.699-3.295 3.363-5.999 8.717-8.487-7.204-.596-13.86-2.575-19.747-5.912a44.321 44.321 0 0 1-11.275-9.135c.57 4.485.657 9.422-.144 14.571-1.054 6.771-3.497 13.09-7.3 18.915 2.98-1.437 5.474-2.125 7.636-2.125l.003.002Z" fill="#B3F131"></path>
+              <path d="M74.021 50.092a2.717 2.717 0 1 0 0-5.433 2.717 2.717 0 0 0 0 5.433Zm14.845-7.546a2.717 2.717 0 1 0 0-5.433 2.717 2.717 0 0 0 0 5.433Z" fill="#B3F131"></path>
+            </g>
+            <defs><clipPath id="footer-logo-clip"><path fill="#fff" transform="translate(0 .583)" d="M0 0h236v89.39H0z"></path></clipPath></defs>
+          </svg>
+        </a>
+        <p class="footer-tagline">Transforma la capacitación de tu equipo en juegos de 2 minutos que mejoran habilidades, reducen rotación y generan resultados.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-link-row"><span class="footer-link-label">Términos para Usuarios</span><span class="footer-lang"><a href="https://galileilearning.com/legal/tos/es/users/" target="_blank" rel="noopener">ES</a><span class="footer-lang-sep" aria-hidden="true">·</span><a href="https://galileilearning.com/legal/tos/en/users/" target="_blank" rel="noopener">EN</a></span></div>
+        <div class="footer-link-row"><span class="footer-link-label">Términos para Negocios</span><span class="footer-lang"><a href="https://galileilearning.com/legal/tos/es/business/" target="_blank" rel="noopener">ES</a><span class="footer-lang-sep" aria-hidden="true">·</span><a href="https://galileilearning.com/legal/tos/en/business/" target="_blank" rel="noopener">EN</a></span></div>
+        <a href="https://galileilearning.com/legal/privacy/es/" target="_blank" rel="noopener" class="footer-link-solo">Política de Privacidad</a>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">© 2025 Galilei. Todos los derechos reservados. | Soporta inglés y español</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
