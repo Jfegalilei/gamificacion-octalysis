@@ -219,6 +219,28 @@ main .gm-hero-grid {
 /* ===== CAPÍTULOS ===== */
 .gm-c1, .gm-c3, .gm-c5, .gm-c7 { background: var(--bg-base); }
 .gm-c2, .gm-c4, .gm-c6, .gm-diag { background: var(--bg-surface); border-block: 1px solid var(--border); }
+
+/* Fondos de escenarios del Galiverso, uno cada tres secciones como el del
+   hero: tenues y fundidos arriba y abajo con el color de la sección. */
+.gm-c3, .gm-c6 { position: relative; overflow: hidden; }
+.gm-c3::before, .gm-c6::before,
+.gm-c3::after, .gm-c6::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.gm-c3::before { background: url(assets/fondo-galaxia.jpg) center / cover no-repeat; opacity: .45; }
+.gm-c6::before { background: url(assets/fondo-nerelia.jpg) center / cover no-repeat; opacity: .28; filter: saturate(.65); }
+.gm-c3::after { background: linear-gradient(to bottom, var(--bg-base) 0%, transparent 22%, transparent 78%, var(--bg-base) 100%); }
+.gm-c6::after { background: linear-gradient(to bottom, var(--bg-surface) 0%, transparent 22%, transparent 78%, var(--bg-surface) 100%); }
+/* El diagnóstico es largo: la imagen ocupa solo la parte de arriba y se
+   desvanece hacia abajo, en vez de estirarse por toda la sección. Muy tenue,
+   para no competir con el verde del resultado. */
+.gm-diag { position: relative; overflow: hidden; }
+.gm-diag::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: min(100%, 1100px); z-index: 0; pointer-events: none;
+  background: url(assets/fondo-asteroides.jpg) center top / cover no-repeat;
+  opacity: .32;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 55%, transparent 100%);
+}
+.gm-c3 > .container, .gm-c6 > .container, .gm-diag > .container { position: relative; z-index: 1; }
 .gm-cap-head { max-width: 800px; margin-bottom: 44px; }
 .gm-cap-tag {
   display: flex;
@@ -321,6 +343,9 @@ main .gm-hero-grid {
 .gm-octa-masa {
   fill: rgba(179, 241, 49, .3);
   fill-rule: evenodd;
+}
+.gm-octa-masa-borde {
+  fill: none;
   stroke: var(--green-light);
   stroke-width: 2;
   stroke-linejoin: round;
@@ -374,8 +399,8 @@ main .gm-hero-grid {
 /* Explorador (cap. 2) */
 .gm-octa-grid {
   display: grid;
-  grid-template-columns: minmax(300px, 1fr) 1fr;
-  gap: 56px;
+  grid-template-columns: minmax(300px, 1.1fr) .9fr;
+  gap: 48px;
   align-items: start;
 }
 #octa-explorar { position: sticky; top: 110px; }
@@ -560,7 +585,7 @@ main .gm-hero-grid {
 
 .gm-lecturas-grid {
   display: grid;
-  grid-template-columns: minmax(280px, .85fr) 1.15fr;
+  grid-template-columns: minmax(300px, 1fr) 1fr;
   gap: 52px;
   align-items: center;
 }
@@ -597,6 +622,9 @@ main .gm-hero-grid {
 .gm-eje-lbl.es-int { text-anchor: start; fill: var(--green-light); }
 .gm-eje-lbl.es-blanco { text-anchor: middle; fill: var(--green-light); }
 .gm-eje-lbl.es-negro { text-anchor: middle; fill: var(--coral); }
+/* Debajo del octágono, cada una alineada a su borde. */
+.gm-eje-lbl.es-ext.es-abajo { text-anchor: start; }
+.gm-eje-lbl.es-int.es-abajo { text-anchor: end; }
 [data-lente="hat"] .gm-seg[data-cd="1"] path,
 [data-lente="hat"] .gm-seg[data-cd="2"] path,
 [data-lente="hat"] .gm-seg[data-cd="3"] path { fill: rgba(179, 241, 49, .2); stroke: rgba(179, 241, 49, .5); }
@@ -788,7 +816,7 @@ main .gm-hero-grid {
   border-radius: var(--radius-md);
   padding: 24px 22px;
 }
-.gm-c6 .gm-jug { background: rgba(255, 255, 255, .02); }
+.gm-c6 .gm-jug { background: rgba(23, 26, 30, .88); }
 .gm-jug.es-dominante { border-color: rgba(179, 241, 49, .4); background: rgba(179, 241, 49, .04); }
 .gm-jug-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; }
 .gm-jug h4 { font-family: var(--font-display); font-size: 1.05rem; color: var(--white); margin: 0; font-weight: var(--fw-semibold); }
@@ -878,6 +906,25 @@ main .gm-hero-grid {
   margin-bottom: 5px;
 }
 .gm-rec-costo { flex-shrink: 0; font-size: .72rem; color: var(--text-muted); white-space: nowrap; }
+/* Cómo darlo: cada forma lleva su número y su ícono. */
+.gm-entrega-top { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.gm-entrega-ico { width: auto; height: 60px; max-width: 96px; flex-shrink: 0; object-fit: contain; }
+.gm-entrega-num {
+  margin-right: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  color: var(--accent);
+}
+.gm-entrega-tec {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: .02em;
+  color: var(--text-muted);
+}
+.gm-entrega-top h4 { margin: 0; }
 .gm-rec-def { color: var(--text-secondary); font-size: .9rem; line-height: 1.6; margin: 0 0 14px; }
 .gm-rec-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 14px; }
 .gm-cd-chip {
@@ -950,7 +997,9 @@ main .gm-hero-grid {
 }
 .gm-op:hover { border-color: rgba(179, 241, 49, .45); color: var(--white); }
 .gm-op:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.gm-op.is-on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: var(--fw-medium); }
+/* Seleccionada: contorno y texto verdes, como la etiqueta "elige varias" pero
+   en verde. Rellena de verde se confundía con los botones. */
+.gm-op.is-on { background: rgba(179, 241, 49, .08); border-color: var(--accent); color: var(--green-light); font-weight: var(--fw-medium); }
 .gm-form-acciones { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 28px; }
 .gm-form-acciones .btn-primary:disabled { opacity: .35; cursor: not-allowed; transform: none; box-shadow: none; }
 .gm-form-acciones .btn-primary:disabled::after { display: none; }
@@ -981,6 +1030,9 @@ body.tiene-resultado .gm-resultado { display: block; }
 .gm-seg.nivel-alto path { fill: rgba(179, 241, 49, .2); stroke: var(--green-light); stroke-width: 2; }
 .gm-seg.nivel-medio path { fill: rgba(255, 239, 124, .14); stroke: rgba(255, 239, 124, .6); }
 .gm-seg.nivel-bajo path { fill: rgba(255, 255, 255, .04); stroke: rgba(255, 255, 255, .18); }
+/* En "Tu octágono" las piezas van en el gris del hero, sin el color del nivel: el nivel ya
+   lo dicen la masa verde y las etiquetas de afuera. */
+.gm-octa-res .is-medido .gm-seg path { fill: transparent; stroke: rgba(255, 255, 255, .1); stroke-width: 1; }
 .gm-seg.nivel-alto .gm-seg-num { fill: var(--green-light); }
 .gm-seg.nivel-medio .gm-seg-num { fill: var(--warning-light); }
 .gm-seg.nivel-bajo .gm-seg-num { fill: var(--neutral-04); }

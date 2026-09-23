@@ -439,30 +439,34 @@ var SAPS = [
   }
 ];
 
+/* tecnica: el número de la Técnica de Juego de Octalysis con que la nombra
+   el boletín The Octalysis Observer. */
 var ENTREGAS = [
-  { id: 'fija', nombre: 'Acción fija', cds: [2, 4, 6], def: 'La persona sabe exactamente qué hacer y exactamente qué va a recibir. Diez sellos, un café.', cuando: 'Para volver algo costumbre: es la más clara y la más fácil de explicar.' },
-  { id: 'aleatoria', nombre: 'Recompensa aleatoria', cds: [7], def: 'Sabe qué tiene que hacer, pero no qué va a recibir a cambio.', cuando: 'Cuando la rutina ya se volvió aburrida y hay que despertar la curiosidad. El raspa y gana es esto.' },
-  { id: 'easter', nombre: 'Recompensa inesperada', cds: [7, 5], def: 'Una sorpresa que nadie anunció. La persona cumplió el requisito sin enterarse de que existía.', cuando: 'Para que se corra la voz: lo primero que hace quien la recibe es contarlo.' },
-  { id: 'loteria', nombre: 'Lotería rotativa', cds: [7, 6], def: 'Un premio grande para unos pocos, elegidos al azar. Entrar cuesta poco y ganar es difícil; entre más participa uno, más opciones tiene.', cuando: 'Cuando quieres que participe mucha gente sin gastar mucho.' },
-  { id: 'social', nombre: 'Tesoros sociales', cds: [5], def: 'Algo que solo se consigue a través de otra persona: no se compra ni se gana solo.', cuando: 'Para que la gente se busque entre sí. Referidos, comisiones, regalos entre compañeros.' },
-  { id: 'coleccion', nombre: 'Coleccionables', cds: [4, 7], def: 'El premio llega partido: hay que juntar todas las piezas para armarlo.', cuando: 'Para sostener el esfuerzo en el tiempo. Es lo mismo que llenar una tarjeta de sellos.' }
+  { id: 'fija', tecnica: 7, icono: 'fija.png', nombre: 'Acción Fija', cds: [2, 4, 6], def: 'La persona sabe exactamente qué hacer y exactamente qué va a recibir. Diez sellos, un café.', cuando: 'Para volver algo costumbre: es la más clara y la más fácil de explicar.' },
+  { id: 'aleatoria', tecnica: 72, icono: 'aleatoria.png', nombre: 'Recompensas Aleatorias', cds: [7], def: 'Sabe qué tiene que hacer, pero no qué va a recibir a cambio.', cuando: 'Cuando la rutina ya se volvió aburrida y hay que despertar la curiosidad. El raspa y gana es esto.' },
+  { id: 'easter', tecnica: 30, icono: 'inesperada.png', nombre: 'Recompensas Inesperadas (Easter Eggs)', cds: [7, 5], def: 'Una sorpresa que nadie anunció. La persona cumplió el requisito sin enterarse de que existía.', cuando: 'Para que se corra la voz: lo primero que hace quien la recibe es contarlo.' },
+  { id: 'loteria', tecnica: 74, icono: 'loteria.png', nombre: 'Recompensas Rotativas (Lotería)', cds: [7, 6], def: 'Un premio grande para unos pocos, elegidos al azar. Entrar cuesta poco y ganar es difícil; entre más participa uno, más opciones tiene.', cuando: 'Cuando quieres que participe mucha gente sin gastar mucho.' },
+  { id: 'social', tecnica: 63, icono: 'social.png', nombre: 'Tesoro Social', cds: [5], def: 'Algo que solo se consigue a través de otra persona: no se compra ni se gana solo.', cuando: 'Para que la gente se busque entre sí. Referidos, comisiones, regalos entre compañeros.' },
+  { id: 'coleccion', tecnica: 16, icono: 'coleccion.svg', nombre: 'Elementos Coleccionables', cds: [4, 7], def: 'El premio llega partido: hay que juntar todas las piezas para armarlo.', cuando: 'Para sostener el esfuerzo en el tiempo. Es lo mismo que llenar una tarjeta de sellos.' }
 ];
 
+/* tecnica: el número de la Técnica de Juego de Octalysis (Yu-kai Chou):
+   Mystery Box #72, Magnetic Caps #68, Boosters #31. */
 var MECANICAS_POTENTES = [
   {
-    nombre: 'La sorpresa diaria', cds: [7, 8, 2, 4, 3],
+    nombre: 'Caja Misteriosa', tecnica: 72, icono: 'sorpresa.png', cds: [7, 8, 2, 4, 3],
     def: 'Algo que se recibe solo por aparecer, y que cambia cada día. La persona sabe que va a recibir algo; no sabe qué. Como una caja que se abre al llegar.',
     como: 'Crea la costumbre de volver todos los días, y mantiene la cosa presente en la cabeza de la gente.',
     ojo: 'Si lo que sale adentro siempre es parecido, deja de ser impredecible y se vuelve trámite.'
   },
   {
-    nombre: 'El tope que atrae', cds: [6, 8],
+    nombre: 'Topes Magnéticos', tecnica: 68, icono: 'tope.png', cds: [6, 8],
     def: 'Un máximo puesto a propósito un poco por encima de lo que la gente ya hace, que se amplía para quien avanza.',
     como: 'Suena al revés, pero funciona: si quieres que algo se haga más, ponle un límite.',
     ojo: 'El tope tiene que quedar cerca de lo que la gente ya hace. Muy alto no se siente; muy bajo desespera.'
   },
   {
-    nombre: 'Las ventajas temporales', cds: [3, 2],
+    nombre: 'Potenciadores', tecnica: 31, icono: 'ventajas.png', cds: [3, 2],
     def: 'Un beneficio que dura poco y que le facilita las cosas a la persona mientras corre: cuenta doble, se salta un requisito, elige primero.',
     como: 'Mientras la ventaja está activa, la gente busca hacer justo lo que tú querías. Es la hora feliz: el mismo trago, pero todo el mundo llega a las seis.',
     ojo: 'Es la de mayor valor de todas, y conviene que exista todo el tiempo, no una vez al año.'
@@ -588,26 +592,43 @@ function poligonoRedondo(pts, r) {
 /* La masa: los ocho vértices unidos, menos el octágono base, que queda hueco.
    Una sola pieza, un solo verde. Un motivador bajo igual se ve, solo que su
    vértice apenas se despega del lado. */
-function pathMasa(valores) {
+function bordeMasa(valores) {
   var pts = ORDEN_RELOJ.map(function (cd) {
     return punto(radioVertice(valores[cd]), DRIVES[cd].ang);
   });
-  return poligonoRedondo(pts, 22) + ' ' + octPath(OCTA.base);
+  return poligonoRedondo(pts, 22);
+}
+function pathMasa(valores) {
+  return bordeMasa(valores) + ' ' + octPath(OCTA.base);
 }
 
-/* Los dos ejes de las lecturas; el CSS muestra solo el de la lente activa. */
-function svgEjes() {
-  var largo = 336, rLbl = 302;
+/* Los dos ejes de las lecturas; el CSS muestra solo el de la lente activa.
+   ajustado: el octágono ocupa todo el ancho, así que las etiquetas no caben a
+   los lados: Extrínsecos e Intrínsecos van debajo, cada una en su lado, y los
+   sombreros arriba y abajo, pegados al octágono. */
+var EJES_AJUSTE = { lado: OCTA.base + 6, arriba: 44, abajo: 52 };
+function svgEjes(ajustado) {
+  var largo = ajustado ? EJES_AJUSTE.lado : 336, rLbl = 302;
+  var cx = OCTA.cx, cy = OCTA.cy;
+  var yAbajo = cy + EJES_AJUSTE.lado + 38;
+  var motiv = ajustado
+    ? '<text class="gm-eje-lbl es-ext es-abajo" x="' + (cx - EJES_AJUSTE.lado) + '" y="' + yAbajo + '">Extrínsecos</text>' +
+      '<text class="gm-eje-lbl es-int es-abajo" x="' + (cx + EJES_AJUSTE.lado) + '" y="' + yAbajo + '">Intrínsecos</text>'
+    : '<text class="gm-eje-lbl es-ext" x="' + (cx - rLbl) + '" y="' + (cy + 9) + '">Extrínsecos</text>' +
+      '<text class="gm-eje-lbl es-int" x="' + (cx + rLbl) + '" y="' + (cy + 9) + '">Intrínsecos</text>';
+  var hat = ajustado
+    ? '<text class="gm-eje-lbl es-blanco" x="' + cx + '" y="' + (cy - EJES_AJUSTE.lado - 16) + '">Sombrero blanco</text>' +
+      '<text class="gm-eje-lbl es-negro" x="' + cx + '" y="' + yAbajo + '">Sombrero negro</text>'
+    : '<text class="gm-eje-lbl es-blanco" x="' + cx + '" y="' + (cy - rLbl) + '">Sombrero blanco</text>' +
+      '<text class="gm-eje-lbl es-negro" x="' + cx + '" y="' + (cy + rLbl + 20) + '">Sombrero negro</text>';
   return (
     '<g class="gm-eje gm-eje-motiv">' +
-      '<line class="gm-eje-linea" x1="' + OCTA.cx + '" y1="' + (OCTA.cy - largo) + '" x2="' + OCTA.cx + '" y2="' + (OCTA.cy + largo) + '"/>' +
-      '<text class="gm-eje-lbl es-ext" x="' + (OCTA.cx - rLbl) + '" y="' + (OCTA.cy + 9) + '">Extrínsecos</text>' +
-      '<text class="gm-eje-lbl es-int" x="' + (OCTA.cx + rLbl) + '" y="' + (OCTA.cy + 9) + '">Intrínsecos</text>' +
+      '<line class="gm-eje-linea" x1="' + cx + '" y1="' + (cy - largo) + '" x2="' + cx + '" y2="' + (cy + largo) + '"/>' +
+      motiv +
     '</g>' +
     '<g class="gm-eje gm-eje-hat">' +
-      '<line class="gm-eje-linea" x1="' + (OCTA.cx - largo) + '" y1="' + OCTA.cy + '" x2="' + (OCTA.cx + largo) + '" y2="' + OCTA.cy + '"/>' +
-      '<text class="gm-eje-lbl es-blanco" x="' + OCTA.cx + '" y="' + (OCTA.cy - rLbl) + '">Sombrero blanco</text>' +
-      '<text class="gm-eje-lbl es-negro" x="' + OCTA.cx + '" y="' + (OCTA.cy + rLbl + 20) + '">Sombrero negro</text>' +
+      '<line class="gm-eje-linea" x1="' + (cx - largo) + '" y1="' + cy + '" x2="' + (cx + largo) + '" y2="' + cy + '"/>' +
+      hat +
     '</g>'
   );
 }
@@ -655,6 +676,8 @@ function dibujarOctagono(contenedor, opciones) {
 
     /* La masa: una sola pieza, un solo verde, con el octágono base hueco. */
     partes.push('<path class="gm-octa-masa" d="' + pathMasa(medido) + '" />');
+    /* El borde verde solo por fuera: por dentro, donde toca el octágono, no. */
+    partes.push('<path class="gm-octa-masa-borde" d="' + bordeMasa(medido) + '" />');
   }
 
   ORDEN_RELOJ.forEach(function (cd) {
@@ -664,8 +687,17 @@ function dibujarOctagono(contenedor, opciones) {
     var clases = 'gm-seg' + (nivel ? ' nivel-' + nivel : '');
     var rol = opciones.interactivo ? ' role="tab" tabindex="-1" aria-selected="false"' : '';
     /* Cuando hay valores la forma la dibuja la masa completa; el grupo solo
-       lleva el ícono y las etiquetas. */
-    var forma = valor === null ? '<path d="' + pathSegmento(d.ang, OCTA.base, rInt) + '"/>' : '';
+       lleva el ícono y las etiquetas. Con piezas, el octágono base se parte en
+       las mismas piezas redondeadas de los octágonos de arriba, con el hueco
+       del centro libre para la frase. */
+    var forma = '';
+    if (valor === null) {
+      forma = '<path d="' + pathSegmento(d.ang, OCTA.base, rInt) + '"/>';
+    } else if (opciones.piezas) {
+      var pieza = pathPieza(d.ang, R_HUECO);
+      forma = '<path d="' + pieza + '" filter="url(#gm-pieza-sombra-medido)" style="fill:#17181C;fill-opacity:.94;stroke:none"/>' +
+        '<path d="' + pieza + '"/>';
+    }
     var dentro = '';
 
     if (iconos === 'dentro') {
@@ -686,7 +718,7 @@ function dibujarOctagono(contenedor, opciones) {
       /* El ícono vive dentro del octágono base, sobre su lado: así se sabe
          de quién es cada tramo de la masa. */
       var lado2 = ladoIcono(cd, 74);
-      var cIcono2 = punto(207, d.ang);
+      var cIcono2 = punto(opciones.piezas ? (R_HUECO + APOTEMA) / 2 : 207, d.ang);
       dentro =
         '<image class="gm-seg-icono" href="assets/cd/cd' + cd + '.png" ' +
           'x="' + (cIcono2[0] - lado2 / 2).toFixed(0) + '" y="' + (cIcono2[1] - lado2 / 2).toFixed(0) + '" ' +
@@ -716,6 +748,8 @@ function dibujarOctagono(contenedor, opciones) {
 
   if (conNucleo) {
     partes.push('<circle class="gm-octa-core" cx="' + OCTA.cx + '" cy="' + OCTA.cy + '" r="' + OCTA.inner + '"/>');
+  }
+  if (conNucleo || opciones.centro) {
     if (opciones.centro) {
       /* Una frase en varias líneas, centrada en bloque sobre el núcleo. */
       var n = opciones.centro.length;
@@ -736,7 +770,10 @@ function dibujarOctagono(contenedor, opciones) {
 
   contenedor.innerHTML = '<svg class="gm-octa-svg' + (valores ? ' is-medido' : '') + '" viewBox="' + vista + '"' +
     (opciones.interactivo ? ' role="tablist"' : ' role="img"') +
-    ' aria-label="Octágono de los ocho motivadores">' + partes.join('') + '</svg>';
+    ' aria-label="Octágono de los ocho motivadores">' +
+    (opciones.piezas ? '<defs><filter id="gm-pieza-sombra-medido" x="-30%" y="-30%" width="160%" height="170%">' +
+      '<feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#000" flood-opacity=".35"/></filter></defs>' : '') +
+    partes.join('') + '</svg>';
 }
 
 /* ---------------------------------------------------------------- OCTÁGONO EN PIEZAS */
@@ -745,10 +782,13 @@ function dibujarOctagono(contenedor, opciones) {
    y sombra. Cada pieza es una cuña que va de cerca del centro hasta el lado,
    con una separación de ancho fijo entre vecinas. Adentro, el ícono va
    centrado en la mitad interior y el número con el nombre en la exterior. */
+/* Hueco central del octágono medido en piezas: cabe la frase del centro. */
+var R_HUECO = 104;
 var PIEZA = { gap: 7, rInt: 68, curva: 20, rIcono: 106, icono: 52, rTexto: 206, rCirculo: 132 };
 var TAN22 = Math.tan(22.5 * Math.PI / 180);
 
-function pathPieza(angDeg) {
+function pathPieza(angDeg, rInt) {
+  rInt = rInt || PIEZA.rInt;
   var h = (PIEZA.gap / 2) / COS22;
   var a = (angDeg - 90) * Math.PI / 180;
   var u = [Math.cos(a), Math.sin(a)], v = [-u[1], u[0]];
@@ -756,7 +796,7 @@ function pathPieza(angDeg) {
     var sv = lado * (t * TAN22 - h);
     return [OCTA.cx + u[0] * t + v[0] * sv, OCTA.cy + u[1] * t + v[1] * sv];
   }
-  return poligonoRedondo([en(APOTEMA, -1), en(APOTEMA, 1), en(PIEZA.rInt, 1), en(PIEZA.rInt, -1)], PIEZA.curva);
+  return poligonoRedondo([en(APOTEMA, -1), en(APOTEMA, 1), en(rInt, 1), en(rInt, -1)], PIEZA.curva);
 }
 
 function dibujarOctagonoPiezas(contenedor, opciones) {
@@ -764,6 +804,15 @@ function dibujarOctagonoPiezas(contenedor, opciones) {
   opciones = opciones || {};
   var piezas = [], contenido = [];
   var sombra = 'gm-pieza-sombra-' + (contenedor.id || 'octa');
+  /* gris: el gris del octágono del hero; si no, negro profundo. */
+  var fondoPieza = opciones.gris ? 'fill:#17181C;fill-opacity:.94;stroke:none' : 'fill:#0B0C0E;stroke:none';
+  /* ajustado: el viewBox pegado al octágono, para que se vea más grande. */
+  var vista = opciones.ajustado
+    ? (opciones.ejes
+        ? [OCTA.cx - EJES_AJUSTE.lado, OCTA.cy - EJES_AJUSTE.lado - EJES_AJUSTE.arriba,
+           EJES_AJUSTE.lado * 2, EJES_AJUSTE.lado * 2 + EJES_AJUSTE.arriba + EJES_AJUSTE.abajo].join(' ')
+        : vistaDe(OCTA.base + 6))
+    : (opciones.ejes ? VISTA.ejes : VISTA.plano);
 
   ORDEN_RELOJ.forEach(function (cd) {
     var d = DRIVES[cd];
@@ -771,7 +820,7 @@ function dibujarOctagonoPiezas(contenedor, opciones) {
     /* Fondo negro con sombra, como en el hero; encima, el color de la lente
        o el del estado (activo, hover). */
     var fondo =
-      '<path d="' + forma + '" filter="url(#' + sombra + ')" style="fill:#0B0C0E;stroke:none"/>' +
+      '<path d="' + forma + '" filter="url(#' + sombra + ')" style="' + fondoPieza + '"/>' +
       '<path d="' + forma + '"/>';
 
     var cI = punto(PIEZA.rIcono, d.ang), lado = ladoIcono(cd, PIEZA.icono);
@@ -813,13 +862,13 @@ function dibujarOctagonoPiezas(contenedor, opciones) {
   /* Orden: piezas, luego el eje, luego íconos y textos. Así el eje se ve
      sobre las piezas oscuras y los íconos y nombres quedan encima de él. */
   contenedor.innerHTML =
-    '<svg class="gm-octa-svg gm-octa-piezas" viewBox="' + (opciones.ejes ? VISTA.ejes : VISTA.plano) + '"' +
+    '<svg class="gm-octa-svg gm-octa-piezas" viewBox="' + vista + '"' +
     (opciones.interactivo ? ' role="tablist"' : ' role="img"') +
     ' aria-label="Octágono de los ocho motivadores">' +
       '<defs><filter id="' + sombra + '" x="-30%" y="-30%" width="160%" height="170%">' +
         '<feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#000" flood-opacity=".35"/>' +
       '</filter></defs>' +
-      piezas.join('') + circulo + (opciones.ejes ? svgEjes() : '') + contenido.join('') +
+      piezas.join('') + circulo + (opciones.ejes ? svgEjes(opciones.ajustado) : '') + contenido.join('') +
     '</svg>';
 }
 
@@ -830,7 +879,7 @@ function initExplorador() {
   var panel = document.getElementById('octa-panel');
   if (!wrap || !panel) return;
 
-  dibujarOctagonoPiezas(wrap, { interactivo: true });
+  dibujarOctagonoPiezas(wrap, { interactivo: true, gris: true, ajustado: true });
   var segs = Array.prototype.slice.call(wrap.querySelectorAll('.gm-seg'));
 
   function pintar(cd) {
@@ -882,7 +931,7 @@ function initExplorador() {
 function initLecturas() {
   var wrap = document.getElementById('octa-lecturas');
   if (!wrap) return;
-  dibujarOctagonoPiezas(wrap, { ejes: true });
+  dibujarOctagonoPiezas(wrap, { ejes: true, gris: true, ajustado: true });
 
   var botones = Array.prototype.slice.call(document.querySelectorAll('.gm-lente-btn'));
   var paneles = Array.prototype.slice.call(document.querySelectorAll('.gm-lectura'));
@@ -1060,6 +1109,17 @@ function initQuiz() {
 
 /* ---------------------------------------------------------------- SAPS + ENTREGAS (estático) */
 
+/* Ícono, nombre y técnica de juego: la cabecera de las tarjetas de "Cómo
+   darlo" y de las tres mecánicas. Con i, el nombre lleva su número delante. */
+function cabeceraNumerada(m, i, carpeta) {
+  var num = i === null ? '' : '<span class="gm-entrega-num">' + pad(i + 1) + '</span>';
+  return '<div class="gm-entrega-top">' +
+    '<img class="gm-entrega-ico" src="' + carpeta + m.icono + '" alt="">' +
+    '<div><h4>' + num + m.nombre + '</h4>' +
+    '<span class="gm-entrega-tec">Técnica de juego #' + m.tecnica + '</span></div>' +
+  '</div>';
+}
+
 function initRecompensas() {
   var contS = document.getElementById('saps-lista');
   var contE = document.getElementById('entregas-lista');
@@ -1081,9 +1141,9 @@ function initRecompensas() {
   }
 
   if (contE) {
-    contE.innerHTML = ENTREGAS.map(function (m) {
-      return '<article class="gm-rec">' +
-        '<h4>' + m.nombre + '</h4>' +
+    contE.innerHTML = ENTREGAS.map(function (m, i) {
+      return '<article class="gm-rec gm-entrega">' +
+        cabeceraNumerada(m, i, 'assets/entregas/') +
         '<p class="gm-rec-def">' + m.def + '</p>' +
         '<div class="gm-rec-chips">' + m.cds.map(function (cd) { return chipCD(cd); }).join('') + '</div>' +
         '<p class="gm-rec-cuando"><strong>Cuándo usarla:</strong> ' + m.cuando + '</p>' +
@@ -1093,8 +1153,8 @@ function initRecompensas() {
 
   if (contM) {
     contM.innerHTML = MECANICAS_POTENTES.map(function (m) {
-      return '<article class="gm-rec">' +
-        '<h4>' + m.nombre + '</h4>' +
+      return '<article class="gm-rec gm-entrega">' +
+        cabeceraNumerada(m, null, 'assets/mecanicas/') +
         '<p class="gm-rec-def">' + m.def + '</p>' +
         '<div class="gm-rec-chips">' + m.cds.map(function (cd) { return chipCD(cd); }).join('') + '</div>' +
         '<p class="gm-rec-cuando"><strong>Para qué sirve:</strong> ' + m.como + '</p>' +
@@ -1324,7 +1384,7 @@ function pintarResultado() {
   resultado.lista.forEach(function (it) { niveles[it.cd] = it.nivel; valores[it.cd] = it.valor; });
   dibujarOctagono(document.getElementById('octa-resultado'), {
     niveles: niveles, valores: valores, iconos: 'ancla', etiquetas: 'fuera',
-    centro: ['Motivadores', 'de tus', 'jugadores']
+    nucleo: false, piezas: true
   });
   pintarListaCompacta();
   pintarNiveles();
