@@ -24,7 +24,7 @@ var DRIVES = {
     ]
   },
   2: {
-    n: 2, corto: 'Desarrollo', nombre: 'Desarrollo y Cumplimiento de Objetivos',
+    n: 2, corto: 'Progreso', nombre: 'Progreso y Cumplimiento de Objetivos',
     def: 'La motivación por subir de nivel, mejorar y alcanzar objetivos.',
     hat: 'white', motiv: 'ext', ang: 315,
     largo: 'El más usado, y por eso el más malgastado. Solo motiva si costó: si era fácil, el reconocimiento no vale nada. Lo que mueve no es el premio, es ver que se avanza.',
@@ -148,8 +148,8 @@ var EJEMPLOS = {
   ],
   5: [
     { app: 'Likes', que: 'El número no vale nada y aun así revisas cuánto subió.' },
-    { app: 'El partido del domingo', que: 'Nadie va por el fútbol. Van porque están los de siempre, y el que falta se nota.' },
-    { app: 'Ligas de Duolingo', que: 'Estudiar solo aburre. Quedar de último en el grupo, no.' }
+    { app: 'El restaurante lleno', que: 'Entre uno vacío y uno con fila, eliges el de la fila. Si tanta gente va, por algo será.' },
+    { app: 'El gimnasio con amigos', que: 'Solo, faltas. Si te están esperando a las 6, vas.' }
   ],
   6: [
     { app: 'Booking', que: 'Queda una habitación a ese precio. Decides en treinta segundos lo que ibas a pensar una semana.' },
@@ -169,9 +169,14 @@ var EJEMPLOS = {
 };
 
 /* Nombre para dibujar dentro del octágono, partido en las líneas que caben. */
+/* El corazón (05) y los dados (07) son anchos y bajitos: en el mismo cuadro
+   que los demás se ven más chicos. Se agrandan para que queden parejos. */
+var ESCALA_ICONO = { 5: 1.3, 7: 1.3 };
+function ladoIcono(cd, lado) { return Math.round(lado * (ESCALA_ICONO[cd] || 1)); }
+
 var NOMBRE_OCTA = {
   1: ['Sentido', 'Épico'],
-  2: ['Desarrollo'],
+  2: ['Progreso'],
   3: ['Creatividad'],
   4: ['Propiedad'],
   5: ['Influencia', 'Social'],
@@ -249,7 +254,7 @@ var QUIZ = [
   { cd: 7, texto: 'Cada video que aparece al deslizar es distinto, y nunca sabes cuál viene.', pista: 'Lo que engancha no es el video: es no saber qué sigue.' },
   { cd: 2, texto: 'Una barra te dice que tu perfil está completo al 70%.', pista: 'Nadie te obliga. Te mueve ver el avance y querer cerrarlo.' },
   { cd: 4, texto: 'Acumulas estrellas en una cafetería, y por eso vuelves a esa y no a la de enfrente.', pista: 'Las estrellas ya son tuyas. Cambiar de cafetería sería dejarlas atrás.' },
-  { cd: 5, texto: 'La app te muestra que tu vecino hizo la misma ruta dos minutos más rápido.', pista: 'Corres igual que ayer. Lo que cambió es que alguien lo está viendo.' },
+  { cd: 5, texto: 'La factura del agua te dice que tu vecino ahorró 50 m³ más que tú este año.', pista: 'El agua cuesta lo mismo que ayer. Lo que cambió es que ahora te comparas con alguien.' },
   { cd: 1, texto: 'Escribes un artículo gratis, sin tu nombre, para que cualquiera pueda leerlo.', pista: 'No hay recompensa ni reconocimiento. Hay una causa más grande que tú.' },
   { cd: 3, texto: 'Cocinas sin receta: pruebas, le falta sal, le echas, vuelves a probar.', pista: 'Decides tú y el plato te responde de inmediato. Ese ir y venir es el motor.' }
 ];
@@ -378,19 +383,19 @@ var PREGUNTAS = [
 
 var TIPOS_JUGADOR = [
   {
-    id: 'killer', nombre: 'Competidores', original: 'Killers',
+    id: 'killer', nombre: 'Asesinos', original: 'Killers',
     cds: [2, 5], extra: [],
     def: 'Les gusta ganar, y les gusta sobre todo cuando se nota que ganaron. Necesitan que alguien vea el logro para que el logro cuente.',
     dale: 'Rankings visibles, retos cara a cara, reconocimiento público. Ojo: si el ranking siempre lo gana el mismo, el resto se retira.'
   },
   {
-    id: 'achiever', nombre: 'Logradores', original: 'Achievers',
+    id: 'achiever', nombre: 'Cazadores', original: 'Achievers',
     cds: [2, 6], extra: [],
     def: 'Buscan el logro más grande posible dentro del sistema, siempre que el objetivo sea de verdad difícil. Un reto fácil no les interesa.',
     dale: 'Metas exigentes, niveles escalonados y cosas que solo se desbloquean con esfuerzo real. Nada de premios de participación.'
   },
   {
-    id: 'socializer', nombre: 'Sociales', original: 'Socializers',
+    id: 'socializer', nombre: 'Socializadores', original: 'Socializers',
     cds: [5], extra: [],
     def: 'Están ahí por la gente. Compartir y colaborar es la razón, no el medio. Es el perfil más común de lejos: a cerca del 80% de las personas la mueve lo social, y aun así casi todos los programas de incentivos se arman para que cada quien compita solo.',
     dale: 'Retos en grupo, recompensas que dependan de otro, espacios donde conversar. Competir solos los apaga.'
@@ -590,7 +595,25 @@ function pathMasa(valores) {
   return poligonoRedondo(pts, 22) + ' ' + octPath(OCTA.base);
 }
 
-/* opciones: { niveles, valores, interactivo, centro1, centro2, etiquetas, iconos }
+/* Los dos ejes de las lecturas; el CSS muestra solo el de la lente activa. */
+function svgEjes() {
+  var largo = 336, rLbl = 302;
+  return (
+    '<g class="gm-eje gm-eje-motiv">' +
+      '<line class="gm-eje-linea" x1="' + OCTA.cx + '" y1="' + (OCTA.cy - largo) + '" x2="' + OCTA.cx + '" y2="' + (OCTA.cy + largo) + '"/>' +
+      '<text class="gm-eje-lbl es-ext" x="' + (OCTA.cx - rLbl) + '" y="' + (OCTA.cy + 9) + '">Extrínsecos</text>' +
+      '<text class="gm-eje-lbl es-int" x="' + (OCTA.cx + rLbl) + '" y="' + (OCTA.cy + 9) + '">Intrínsecos</text>' +
+    '</g>' +
+    '<g class="gm-eje gm-eje-hat">' +
+      '<line class="gm-eje-linea" x1="' + (OCTA.cx - largo) + '" y1="' + OCTA.cy + '" x2="' + (OCTA.cx + largo) + '" y2="' + OCTA.cy + '"/>' +
+      '<text class="gm-eje-lbl es-blanco" x="' + OCTA.cx + '" y="' + (OCTA.cy - rLbl) + '">Sombrero blanco</text>' +
+      '<text class="gm-eje-lbl es-negro" x="' + OCTA.cx + '" y="' + (OCTA.cy + rLbl + 20) + '">Sombrero negro</text>' +
+    '</g>'
+  );
+}
+
+/* opciones: { niveles, valores, interactivo, centro1, centro2, centro, etiquetas, iconos }
+   centro: ['línea', ...] -> una frase en el núcleo, en vez de centro1/centro2
    valores: { <cd>: 0..100 } -> dibuja puntas (el octágono "medido")
    niveles: { <cd>: 'alto'|'medio'|'bajo' } -> colorea, y si no hay valores,
             los deriva de VALOR_NIVEL
@@ -614,21 +637,7 @@ function dibujarOctagono(contenedor, opciones) {
   var rInt = conNucleo ? OCTA.inner : 52;
   var partes = [];
 
-  if (opciones.ejes) {
-    var largo = 336, rLbl = 302;
-    partes.push(
-      '<g class="gm-eje gm-eje-motiv">' +
-        '<line class="gm-eje-linea" x1="' + OCTA.cx + '" y1="' + (OCTA.cy - largo) + '" x2="' + OCTA.cx + '" y2="' + (OCTA.cy + largo) + '"/>' +
-        '<text class="gm-eje-lbl es-ext" x="' + (OCTA.cx - rLbl) + '" y="' + (OCTA.cy + 9) + '">Extrínsecos</text>' +
-        '<text class="gm-eje-lbl es-int" x="' + (OCTA.cx + rLbl) + '" y="' + (OCTA.cy + 9) + '">Intrínsecos</text>' +
-      '</g>' +
-      '<g class="gm-eje gm-eje-hat">' +
-        '<line class="gm-eje-linea" x1="' + (OCTA.cx - largo) + '" y1="' + OCTA.cy + '" x2="' + (OCTA.cx + largo) + '" y2="' + OCTA.cy + '"/>' +
-        '<text class="gm-eje-lbl es-blanco" x="' + OCTA.cx + '" y="' + (OCTA.cy - rLbl) + '">Sombrero blanco</text>' +
-        '<text class="gm-eje-lbl es-negro" x="' + OCTA.cx + '" y="' + (OCTA.cy + rLbl + 20) + '">Sombrero negro</text>' +
-      '</g>'
-    );
-  }
+  if (opciones.ejes) partes.push(svgEjes());
 
   var medido = null;
   if (valores) {
@@ -660,7 +669,7 @@ function dibujarOctagono(contenedor, opciones) {
     var dentro = '';
 
     if (iconos === 'dentro') {
-      var lado = 70;
+      var lado = ladoIcono(cd, 70);
       var cIcono = punto(conNucleo ? 146 : 130, d.ang);
       var cNombre = punto(232, d.ang);
       var lineas = NOMBRE_OCTA[cd];
@@ -676,7 +685,7 @@ function dibujarOctagono(contenedor, opciones) {
     } else if (iconos === 'ancla') {
       /* El ícono vive dentro del octágono base, sobre su lado: así se sabe
          de quién es cada tramo de la masa. */
-      var lado2 = 74;
+      var lado2 = ladoIcono(cd, 74);
       var cIcono2 = punto(207, d.ang);
       dentro =
         '<image class="gm-seg-icono" href="assets/cd/cd' + cd + '.png" ' +
@@ -707,9 +716,18 @@ function dibujarOctagono(contenedor, opciones) {
 
   if (conNucleo) {
     partes.push('<circle class="gm-octa-core" cx="' + OCTA.cx + '" cy="' + OCTA.cy + '" r="' + OCTA.inner + '"/>');
-    partes.push('<text class="gm-core-t1" x="' + OCTA.cx + '" y="' + (OCTA.cy - 6) + '">' + (opciones.centro1 || 'OCTALYSIS') + '</text>');
-    partes.push('<text class="gm-core-t2" x="' + OCTA.cx + '" y="' + (OCTA.cy + 20) + '">' +
-      (opciones.centro2 || (valores ? 'tu equipo' : '8 motivadores')) + '</text>');
+    if (opciones.centro) {
+      /* Una frase en varias líneas, centrada en bloque sobre el núcleo. */
+      var n = opciones.centro.length;
+      partes.push('<text class="gm-core-frase" x="' + OCTA.cx + '" y="' + OCTA.cy + '">' +
+        opciones.centro.map(function (t, i) {
+          return '<tspan x="' + OCTA.cx + '" dy="' + (i === 0 ? ((1 - n) / 2 * 1.15 + .35) : 1.15) + 'em">' + t + '</tspan>';
+        }).join('') + '</text>');
+    } else {
+      partes.push('<text class="gm-core-t1" x="' + OCTA.cx + '" y="' + (OCTA.cy - 6) + '">' + (opciones.centro1 || 'OCTALYSIS') + '</text>');
+      partes.push('<text class="gm-core-t2" x="' + OCTA.cx + '" y="' + (OCTA.cy + 20) + '">' +
+        (opciones.centro2 || (valores ? 'tu equipo' : '8 motivadores')) + '</text>');
+    }
   }
 
   var vista = valores
@@ -721,6 +739,90 @@ function dibujarOctagono(contenedor, opciones) {
     ' aria-label="Octágono de los ocho motivadores">' + partes.join('') + '</svg>';
 }
 
+/* ---------------------------------------------------------------- OCTÁGONO EN PIEZAS */
+
+/* El mismo octágono del hero: ocho piezas sueltas con las puntas redondeadas
+   y sombra. Cada pieza es una cuña que va de cerca del centro hasta el lado,
+   con una separación de ancho fijo entre vecinas. Adentro, el ícono va
+   centrado en la mitad interior y el número con el nombre en la exterior. */
+var PIEZA = { gap: 7, rInt: 68, curva: 20, rIcono: 106, icono: 52, rTexto: 206, rCirculo: 132 };
+var TAN22 = Math.tan(22.5 * Math.PI / 180);
+
+function pathPieza(angDeg) {
+  var h = (PIEZA.gap / 2) / COS22;
+  var a = (angDeg - 90) * Math.PI / 180;
+  var u = [Math.cos(a), Math.sin(a)], v = [-u[1], u[0]];
+  function en(t, lado) {
+    var sv = lado * (t * TAN22 - h);
+    return [OCTA.cx + u[0] * t + v[0] * sv, OCTA.cy + u[1] * t + v[1] * sv];
+  }
+  return poligonoRedondo([en(APOTEMA, -1), en(APOTEMA, 1), en(PIEZA.rInt, 1), en(PIEZA.rInt, -1)], PIEZA.curva);
+}
+
+function dibujarOctagonoPiezas(contenedor, opciones) {
+  if (!contenedor) return;
+  opciones = opciones || {};
+  var piezas = [], contenido = [];
+  var sombra = 'gm-pieza-sombra-' + (contenedor.id || 'octa');
+
+  ORDEN_RELOJ.forEach(function (cd) {
+    var d = DRIVES[cd];
+    var forma = pathPieza(d.ang);
+    /* Fondo negro con sombra, como en el hero; encima, el color de la lente
+       o el del estado (activo, hover). */
+    var fondo =
+      '<path d="' + forma + '" filter="url(#' + sombra + ')" style="fill:#0B0C0E;stroke:none"/>' +
+      '<path d="' + forma + '"/>';
+
+    var cI = punto(PIEZA.rIcono, d.ang), lado = ladoIcono(cd, PIEZA.icono);
+    var cT = punto(PIEZA.rTexto, d.ang);
+    var lineas = NOMBRE_OCTA[cd];
+    /* Bloque de texto centrado en su punto: número arriba, nombre abajo. */
+    var yNum = cT[1] - 2 - (lineas.length - 1) * 12;
+    var nombre = lineas.map(function (t, i) {
+      return '<tspan x="' + cT[0].toFixed(0) + '" dy="' + (i === 0 ? 0 : 25) + '">' + t + '</tspan>';
+    }).join('');
+    var dentro =
+        '<image class="gm-seg-icono" href="assets/cd/cd' + cd + '.png" ' +
+          'x="' + (cI[0] - lado / 2).toFixed(0) + '" y="' + (cI[1] - lado / 2).toFixed(0) + '" ' +
+          'width="' + lado + '" height="' + lado + '" />' +
+        '<text class="gm-seg-num" x="' + cT[0].toFixed(0) + '" y="' + yNum.toFixed(0) + '">' + pad(cd) + '</text>' +
+        '<text class="gm-seg-nombre" x="' + cT[0].toFixed(0) + '" y="' + (yNum + 30).toFixed(0) + '">' + nombre + '</text>';
+
+    /* Con ejes, las piezas y su contenido van en capas separadas para que el
+       eje quede en medio. Sin ejes, cada motivador es un solo grupo: así se
+       puede tocar entero en el explorador. */
+    if (opciones.ejes) {
+      piezas.push('<g class="gm-seg" data-cd="' + cd + '">' + fondo + '</g>');
+      contenido.push('<g class="gm-seg" data-cd="' + cd + '">' + dentro + '</g>');
+    } else {
+      var rol = opciones.interactivo ? ' role="tab" tabindex="-1" aria-selected="false"' : '';
+      piezas.push(
+        '<g class="gm-seg" data-cd="' + cd + '"' + rol + ' aria-label="Motivador ' + cd + ': ' + d.nombre + '">' +
+          fondo + dentro +
+        '</g>'
+      );
+    }
+  });
+
+  /* El círculo claro del centro, donde viven los íconos, como en el hero. */
+  var circulo =
+    '<circle cx="' + OCTA.cx + '" cy="' + OCTA.cy + '" r="' + PIEZA.rCirculo + '" fill="#fff" fill-opacity=".04"/>' +
+    '<circle cx="' + OCTA.cx + '" cy="' + OCTA.cy + '" r="' + (PIEZA.rCirculo - .5) + '" fill="none" stroke="#fff" stroke-opacity=".08"/>';
+
+  /* Orden: piezas, luego el eje, luego íconos y textos. Así el eje se ve
+     sobre las piezas oscuras y los íconos y nombres quedan encima de él. */
+  contenedor.innerHTML =
+    '<svg class="gm-octa-svg gm-octa-piezas" viewBox="' + (opciones.ejes ? VISTA.ejes : VISTA.plano) + '"' +
+    (opciones.interactivo ? ' role="tablist"' : ' role="img"') +
+    ' aria-label="Octágono de los ocho motivadores">' +
+      '<defs><filter id="' + sombra + '" x="-30%" y="-30%" width="160%" height="170%">' +
+        '<feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#000" flood-opacity=".35"/>' +
+      '</filter></defs>' +
+      piezas.join('') + circulo + (opciones.ejes ? svgEjes() : '') + contenido.join('') +
+    '</svg>';
+}
+
 /* ---------------------------------------------------------------- EXPLORADOR */
 
 function initExplorador() {
@@ -728,7 +830,7 @@ function initExplorador() {
   var panel = document.getElementById('octa-panel');
   if (!wrap || !panel) return;
 
-  dibujarOctagono(wrap, { interactivo: true, iconos: 'dentro', nucleo: false });
+  dibujarOctagonoPiezas(wrap, { interactivo: true });
   var segs = Array.prototype.slice.call(wrap.querySelectorAll('.gm-seg'));
 
   function pintar(cd) {
@@ -780,7 +882,7 @@ function initExplorador() {
 function initLecturas() {
   var wrap = document.getElementById('octa-lecturas');
   if (!wrap) return;
-  dibujarOctagono(wrap, { iconos: 'dentro', ejes: true, nucleo: false });
+  dibujarOctagonoPiezas(wrap, { ejes: true });
 
   var botones = Array.prototype.slice.call(document.querySelectorAll('.gm-lente-btn'));
   var paneles = Array.prototype.slice.call(document.querySelectorAll('.gm-lectura'));
@@ -841,7 +943,7 @@ function initFases() {
       '</div>';
     dibujarOctagono(document.getElementById('fase-octa'), {
       niveles: niveles, iconos: 'ancla',
-      centro1: 'FASE ' + f.n, centro2: f.nombre.toLowerCase()
+      centro1: 'FASE ' + f.n, centro2: f.nombre
     });
   }
 
@@ -878,6 +980,13 @@ function initQuiz() {
     return a;
   }
 
+  /* En celular las 8 obligan a scrollear: solo 4, siempre con la correcta. */
+  function opcionesPara(correcta) {
+    if (!window.matchMedia('(max-width: 768px)').matches) return opciones;
+    var otras = barajar(opciones.filter(function (cd) { return cd !== correcta; })).slice(0, 3);
+    return otras.concat(correcta).sort(function (a, b) { return a - b; });
+  }
+
   function arrancar() {
     quiz.orden = barajar(QUIZ.map(function (_, i) { return i; }));
     quiz.i = 0; quiz.aciertos = 0; quiz.respondida = false;
@@ -895,7 +1004,7 @@ function initQuiz() {
       '<div class="gm-quiz-barra"><i style="width:' + Math.round((quiz.i / quiz.orden.length) * 100) + '%"></i></div>' +
       '<p class="gm-quiz-texto">' + item.texto + '</p>' +
       '<p class="gm-quiz-instruccion">¿Qué motivador está trabajando?</p>' +
-      '<div class="gm-quiz-ops">' + opciones.map(function (cd) {
+      '<div class="gm-quiz-ops">' + opcionesPara(item.cd).map(function (cd) {
         return '<button type="button" class="gm-quiz-op" data-cd="' + cd + '">' +
           '<b>' + pad(cd) + '</b>' + DRIVES[cd].corto + '</button>';
       }).join('') + '</div>' +
@@ -1214,7 +1323,8 @@ function pintarResultado() {
   var niveles = {}, valores = {};
   resultado.lista.forEach(function (it) { niveles[it.cd] = it.nivel; valores[it.cd] = it.valor; });
   dibujarOctagono(document.getElementById('octa-resultado'), {
-    niveles: niveles, valores: valores, iconos: 'ancla', etiquetas: 'fuera'
+    niveles: niveles, valores: valores, iconos: 'ancla', etiquetas: 'fuera',
+    centro: ['Motivadores', 'de tus', 'jugadores']
   });
   pintarListaCompacta();
   pintarNiveles();

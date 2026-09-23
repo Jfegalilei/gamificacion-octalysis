@@ -134,7 +134,12 @@ main .subtitle strong { color: var(--white); font-weight: var(--fw-semibold); }
 .gm-hero::before {
   content: "";
   position: absolute; inset: 0; z-index: 0;
-  background: radial-gradient(ellipse at 28% 40%, var(--bg-surface) 0%, var(--bg-base) 70%);
+  background:
+    linear-gradient(to bottom, transparent 70%, var(--bg-base) 100%),
+    url(assets/hero-bosque-bg.png) center / cover no-repeat,
+    var(--bg-base);
+  filter: grayscale(1);
+  opacity: .6;
 }
 main .gm-hero-grid {
   display: grid;
@@ -360,6 +365,11 @@ main .gm-hero-grid {
   letter-spacing: 1.4px;
 }
 .gm-core-t2 { font-family: var(--font-body); font-size: 12.5px; text-anchor: middle; fill: var(--text-muted); }
+.gm-core-frase {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px; font-weight: 700;
+  text-anchor: middle; fill: var(--white);
+}
 
 /* Explorador (cap. 2) */
 .gm-octa-grid {
@@ -373,12 +383,14 @@ main .gm-hero-grid {
 #octa-explorar .gm-seg:hover path { fill: rgba(255, 255, 255, .1); }
 #octa-explorar .gm-seg:focus-visible path { stroke: var(--accent); stroke-width: 2.5; }
 #octa-explorar .gm-seg.is-active path { fill: rgba(179, 241, 49, .16); stroke: var(--accent); stroke-width: 2.5; }
-#octa-explorar .gm-seg[data-cd="1"] .gm-seg-num,
+/* Los números con los colores del hero: azul a la izquierda, verde a la
+   derecha, blancos los dos del eje. */
 #octa-explorar .gm-seg[data-cd="2"] .gm-seg-num,
-#octa-explorar .gm-seg[data-cd="3"] .gm-seg-num { fill: var(--green-light); }
-#octa-explorar .gm-seg[data-cd="6"] .gm-seg-num,
-#octa-explorar .gm-seg[data-cd="7"] .gm-seg-num,
-#octa-explorar .gm-seg[data-cd="8"] .gm-seg-num { fill: var(--coral); }
+#octa-explorar .gm-seg[data-cd="4"] .gm-seg-num,
+#octa-explorar .gm-seg[data-cd="6"] .gm-seg-num { fill: var(--blue-light); }
+#octa-explorar .gm-seg[data-cd="3"] .gm-seg-num,
+#octa-explorar .gm-seg[data-cd="5"] .gm-seg-num,
+#octa-explorar .gm-seg[data-cd="7"] .gm-seg-num { fill: var(--green-light); }
 
 .gm-panel {
   background: var(--bg-base);
@@ -553,6 +565,20 @@ main .gm-hero-grid {
   align-items: center;
 }
 .gm-octa-lecturas .gm-seg path { transition: fill var(--t-slow), stroke var(--t-slow); }
+/* Misma letra que el octágono del hero: Space Grotesk en negrita. */
+.gm-octa-piezas .gm-seg-num,
+.gm-octa-piezas .gm-seg-nombre { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.gm-octa-piezas .gm-seg-num { font-size: 38px; }
+.gm-octa-piezas .gm-seg-nombre { font-size: 22px; }
+/* Las piezas que la lectura activa no clasifica quedan negras, como en el
+   hero, y con el ícono y el texto apagados. */
+.gm-octa-piezas .gm-seg path { fill: transparent; }
+.gm-octa-piezas .gm-seg-icono,
+.gm-octa-piezas .gm-seg text { transition: opacity var(--t-slow); }
+[data-lente="motiv"] .gm-octa-piezas .gm-seg[data-cd="1"] :is(.gm-seg-icono, text),
+[data-lente="motiv"] .gm-octa-piezas .gm-seg[data-cd="8"] :is(.gm-seg-icono, text),
+[data-lente="hat"] .gm-octa-piezas .gm-seg[data-cd="4"] :is(.gm-seg-icono, text),
+[data-lente="hat"] .gm-octa-piezas .gm-seg[data-cd="5"] :is(.gm-seg-icono, text) { opacity: .2; }
 
 /* Los ejes que parten el octágono: vertical para extrínsecos/intrínsecos,
    horizontal para los sombreros. Solo se ve el de la lectura activa. */
@@ -571,15 +597,6 @@ main .gm-hero-grid {
 .gm-eje-lbl.es-int { text-anchor: start; fill: var(--green-light); }
 .gm-eje-lbl.es-blanco { text-anchor: middle; fill: var(--green-light); }
 .gm-eje-lbl.es-negro { text-anchor: middle; fill: var(--coral); }
-/* Los nombres de los motivadores que quedan sobre el eje (Sentido Épico y
-   Pérdida en una lectura, Propiedad e Influencia Social en la otra) tienen la
-   línea justo detrás: este halo los despega para que no parezcan tachados. */
-.gm-octa-lecturas .gm-seg-nombre {
-  paint-order: stroke;
-  stroke: var(--bg-base);
-  stroke-width: 6px;
-  stroke-linejoin: round;
-}
 [data-lente="hat"] .gm-seg[data-cd="1"] path,
 [data-lente="hat"] .gm-seg[data-cd="2"] path,
 [data-lente="hat"] .gm-seg[data-cd="3"] path { fill: rgba(179, 241, 49, .2); stroke: rgba(179, 241, 49, .5); }
@@ -1088,6 +1105,7 @@ body.tiene-resultado .gm-resultado { display: block; }
   .gm-seg-num { font-size: 40px; }
   .gm-core-t1 { font-size: 26px; letter-spacing: 1.8px; }
   .gm-core-t2 { font-size: 18px; }
+  .gm-core-frase { font-size: 28px; }
 
   .gm-octa-lista {
     display: flex;
@@ -1129,6 +1147,7 @@ body.tiene-resultado .gm-resultado { display: block; }
   .gm-seg-num { font-size: 52px; }
   .gm-core-t1 { font-size: 34px; letter-spacing: 2px; }
   .gm-core-t2 { font-size: 23px; }
+  .gm-core-frase { font-size: 28px; }
 
   .gm-hero-ctas { flex-direction: column; align-items: stretch; }
   .gm-hero-ctas a { justify-content: center; text-align: center; }
