@@ -1164,11 +1164,16 @@ function initRecompensas() {
   }
 }
 
+function imagenJugador(t) {
+  return '<img class="gm-jug-img" src="assets/jugadores/' + t.id + '.png" alt="" loading="lazy">';
+}
+
 function initJugadores() {
   var cont = document.getElementById('jugadores-lista');
   if (!cont) return;
   cont.innerHTML = TIPOS_JUGADOR.map(function (t) {
     return '<article class="gm-jug">' +
+      imagenJugador(t) +
       '<div class="gm-jug-top"><h4>' + t.nombre + ' <span>' + t.original + '</span></h4></div>' +
       '<p class="gm-jug-cds">Se mueve por ' + t.cds.map(function (c) { return chipCD(c); }).join('') + '</p>' +
       '<p>' + t.def + '</p>' +
@@ -1478,6 +1483,7 @@ function pintarJugadoresResultado() {
   cont.innerHTML = titular +
     '<div class="gm-jug-grid">' + resultado.jugadores.map(function (j, i) {
       return '<article class="gm-jug' + (i === 0 && encaje !== 'bajo' ? ' es-dominante' : '') + '">' +
+        imagenJugador(j.tipo) +
         '<div class="gm-jug-top">' +
           '<h4>' + j.tipo.nombre + '</h4>' +
           '<span class="gm-jug-pct">' + j.pct + '%</span>' +

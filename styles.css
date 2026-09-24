@@ -835,6 +835,7 @@ main .gm-hero-grid {
   padding: 24px 22px;
 }
 .gm-c6 .gm-jug { background: rgba(23, 26, 30, .88); }
+.gm-jug-img { display: block; width: 100%; height: 150px; object-fit: contain; margin: 0 0 16px; }
 .gm-jug.es-dominante { border-color: rgba(179, 241, 49, .4); background: rgba(179, 241, 49, .04); }
 .gm-jug-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; }
 .gm-jug h4 { font-family: var(--font-display); font-size: 1.05rem; color: var(--white); margin: 0; font-weight: var(--fw-semibold); }
