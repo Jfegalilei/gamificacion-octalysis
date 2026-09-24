@@ -1320,6 +1320,19 @@ function initFormulario() {
     guardar();
     pintarSeleccion();
     actualizarProgreso();
+
+    // Al elegir en una pregunta de una sola opción, baja sola a la siguiente.
+    // En las de "elige varias" no, porque ahí se marcan varias seguidas.
+    if (!p.multi && respuestas[pid]) {
+      var fs = btn.closest('.gm-q');
+      var sig = fs && fs.nextElementSibling;
+      var destino = sig || document.querySelector('.gm-form-acciones');
+      if (destino) {
+        setTimeout(function () {
+          destino.scrollIntoView({ behavior: 'smooth', block: sig ? 'start' : 'center' });
+        }, 250);
+      }
+    }
   });
 
   pintarSeleccion();
@@ -1496,6 +1509,28 @@ function initRail() {
   pasos.forEach(function (p) { obs.observe(p); });
 }
 
+/* Botón flotante: baja a la sección que sigue a la que está en pantalla.
+   Se esconde en la última, donde ya no hay a dónde bajar. */
+function initSiguiente() {
+  var btn = document.getElementById('btn-siguiente');
+  if (!btn) return;
+  var secciones = Array.prototype.slice.call(document.querySelectorAll('section.gm-hero, section.gm-cap'));
+
+  function siguiente() {
+    return secciones.filter(function (s) { return s.getBoundingClientRect().top > 8; })[0] || null;
+  }
+
+  function actualizar() { btn.classList.toggle('is-oculto', !siguiente()); }
+
+  btn.addEventListener('click', function () {
+    var s = siguiente();
+    if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  window.addEventListener('scroll', actualizar, { passive: true });
+  window.addEventListener('resize', actualizar);
+  actualizar();
+}
+
 function initReveal() {
   var els = document.querySelectorAll('.reveal, .reveal-right');
   if (!('IntersectionObserver' in window)) {
@@ -1558,6 +1593,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initRecompensas();
   initFormulario();
   initRail();
+  initSiguiente();
   initAcordeones();
   initReveal();
   initMenuMovil();

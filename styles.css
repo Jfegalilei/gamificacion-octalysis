@@ -129,6 +129,24 @@ main .subtitle strong { color: var(--white); font-weight: var(--fw-semibold); }
 .gm-rail a.is-actual .gm-rail-t { opacity: 1; transform: none; }
 @media (min-width: 1400px) { .gm-rail { display: block; } }
 
+/* ===== BOTÓN SIGUIENTE SECCIÓN ===== */
+.gm-siguiente {
+  position: fixed;
+  right: 24px; bottom: 24px;
+  z-index: 800;
+  width: 52px; height: 52px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-fast), background var(--t-fast), opacity var(--t-base), visibility var(--t-base);
+}
+.gm-siguiente:hover { background: var(--accent-hover); transform: translateY(2px); }
+.gm-siguiente:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+.gm-siguiente.is-oculto { opacity: 0; visibility: hidden; pointer-events: none; }
+@media (max-width: 600px) { .gm-siguiente { right: 16px; bottom: 16px; width: 46px; height: 46px; } }
+
 /* ===== HERO ===== */
 .gm-hero { padding: 150px 0 80px; position: relative; overflow: hidden; }
 .gm-hero::before {
@@ -954,7 +972,7 @@ main .gm-hero-grid {
 .gm-form-barra-track i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: var(--radius-pill); transition: width var(--t-base); }
 #form-progreso-texto { color: var(--text-muted); font-size: .82rem; white-space: nowrap; }
 
-.gm-q { border: none; margin: 0 0 28px; padding: 0 0 26px; border-bottom: 1px solid var(--border); }
+.gm-q { border: none; margin: 0 0 28px; padding: 0 0 26px; border-bottom: 1px solid var(--border); scroll-margin-top: 40px; }
 .gm-q:last-of-type { border-bottom: none; padding-bottom: 0; margin-bottom: 8px; }
 .gm-q legend {
   display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
@@ -1211,7 +1229,7 @@ body.tiene-resultado .gm-resultado { display: block; }
 
 /* ===== IMPRESIÓN ===== */
 @media print {
-  #main-nav, .mobile-menu, .gm-rail, footer,
+  #main-nav, .mobile-menu, .gm-rail, .gm-siguiente, footer,
   .gm-hero, .gm-c1, .gm-c2, .gm-c3, .gm-c4, .gm-c5, .gm-c6, .gm-c7,
   .gm-form-wrap, .gm-form-acciones, .gm-bloqueado { display: none !important; }
   body { background: #fff; color: #111; }
