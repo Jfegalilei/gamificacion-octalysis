@@ -109,7 +109,7 @@ var DRIVES = {
     ]
   },
   8: {
-    n: 8, corto: 'Pérdida', nombre: 'Pérdida y Evitación',
+    n: 8, corto: 'Evitación', nombre: 'Pérdida y Evitación',
     def: 'El impulso de querer evitar resultados negativos o consecuencias indeseables.',
     hat: 'black', motiv: 'eje', ang: 180,
     largo: 'Perder duele más o menos el doble de lo que alegra ganar lo mismo. Por eso es el más eficaz a corto plazo y el más peligroso a largo: la gente cumple, pero te odia mientras lo hace.',
@@ -182,7 +182,7 @@ var NOMBRE_OCTA = {
   5: ['Influencia', 'Social'],
   6: ['Escasez'],
   7: ['Curiosidad'],
-  8: ['Pérdida']
+  8: ['Evitación']
 };
 
 var ORDEN_RELOJ = [1, 3, 5, 7, 8, 6, 4, 2];
