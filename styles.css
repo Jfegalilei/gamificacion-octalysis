@@ -505,13 +505,12 @@ main .gm-hero-grid {
   padding: 30px 32px 32px;
 }
 .gm-quiz-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-.gm-quiz-paso, .gm-quiz-marcador {
+.gm-quiz-paso {
   font-size: .78rem;
   text-transform: uppercase;
   letter-spacing: .08em;
   color: var(--text-muted);
 }
-.gm-quiz-marcador { color: var(--accent); font-weight: var(--fw-semibold); }
 .gm-quiz-barra { height: 4px; background: rgba(255, 255, 255, .07); border-radius: var(--radius-pill); overflow: hidden; margin-bottom: 28px; }
 .gm-quiz-barra i { display: block; height: 100%; background: var(--accent); transition: width var(--t-base); }
 .gm-quiz-texto {

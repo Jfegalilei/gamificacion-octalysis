@@ -249,7 +249,7 @@ var FASES = [
 /* ---------------------------------------------------------------- QUIZ */
 
 var QUIZ = [
-  { cd: 8, texto: 'Llevas 47 días seguidos estudiando y la app te avisa que hoy todavía no has entrado.', pista: 'No estudias hoy por aprender: estudias por no romper la racha.' },
+  { cd: 8, texto: 'Llevas una racha de 47 días seguidos estudiando y la app te avisa que hoy todavía no has entrado: si no entras, la pierdes.', pista: 'No estudias hoy por aprender: estudias por no romper la racha.' },
   { cd: 6, texto: 'Queda una habitación a ese precio, dice la página. Decides en treinta segundos lo que ibas a pensar una semana.', pista: 'Lo limitado acelera la decisión. Con cien habitaciones lo pensarías.' },
   { cd: 7, texto: 'Cada video que aparece al deslizar es distinto, y nunca sabes cuál viene.', pista: 'Lo que engancha no es el video: es no saber qué sigue.' },
   { cd: 2, texto: 'Una barra te dice que tu perfil está completo al 70%.', pista: 'Nadie te obliga. Te mueve ver el avance y querer cerrarlo.' },
@@ -1048,7 +1048,6 @@ function initQuiz() {
     cont.innerHTML =
       '<div class="gm-quiz-top">' +
         '<span class="gm-quiz-paso">Situación ' + (quiz.i + 1) + ' de ' + quiz.orden.length + '</span>' +
-        '<span class="gm-quiz-marcador">' + quiz.aciertos + ' de ' + quiz.i + '</span>' +
       '</div>' +
       '<div class="gm-quiz-barra"><i style="width:' + Math.round((quiz.i / quiz.orden.length) * 100) + '%"></i></div>' +
       '<p class="gm-quiz-texto">' + item.texto + '</p>' +
